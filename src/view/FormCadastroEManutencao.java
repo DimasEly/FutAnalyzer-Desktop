@@ -26,50 +26,81 @@ public class FormCadastroEManutencao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jBVoltar = new javax.swing.JButton();
+        jLNome = new javax.swing.JLabel();
+        jLOverall = new javax.swing.JLabel();
+        jLNumero = new javax.swing.JLabel();
+        jTFNome = new javax.swing.JTextField();
+        jTFOverall = new javax.swing.JTextField();
+        jTFNumero = new javax.swing.JTextField();
+        jBExcluir = new javax.swing.JButton();
+        jBCadastrarSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        jBVoltar.setText("Voltar");
 
-        jLabel1.setText("jLabel1");
+        jLNome.setText("Nome");
 
-        jLabel2.setText("jLabel2");
+        jLOverall.setText("Overall");
 
-        jLabel3.setText("jLabel3");
+        jLNumero.setText("Número");
+
+        jBExcluir.setText("Excluir");
+
+        jBCadastrarSalvar.setText("Cadastrar/Salvar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
+                    .addComponent(jLNumero)
+                    .addComponent(jLOverall)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(25, 25, 25)
-                            .addComponent(jButton1))
+                            .addComponent(jBVoltar))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(106, 106, 106)
-                            .addComponent(jLabel1))))
-                .addContainerGap(257, Short.MAX_VALUE))
+                            .addComponent(jLNome))))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTFNome, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                        .addComponent(jTFOverall))
+                    .addComponent(jTFNumero))
+                .addGap(94, 94, 94))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
+                .addComponent(jBExcluir)
+                .addGap(64, 64, 64)
+                .addComponent(jBCadastrarSalvar)
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jButton1)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
+                .addComponent(jBVoltar)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLNome)
+                    .addComponent(jTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLOverall)
+                    .addComponent(jTFOverall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLNumero)
+                    .addComponent(jTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBExcluir)
+                    .addComponent(jBCadastrarSalvar))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -111,9 +142,14 @@ public class FormCadastroEManutencao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jBCadastrarSalvar;
+    private javax.swing.JButton jBExcluir;
+    private javax.swing.JButton jBVoltar;
+    private javax.swing.JLabel jLNome;
+    private javax.swing.JLabel jLNumero;
+    private javax.swing.JLabel jLOverall;
+    private javax.swing.JTextField jTFNome;
+    private javax.swing.JTextField jTFNumero;
+    private javax.swing.JTextField jTFOverall;
     // End of variables declaration//GEN-END:variables
 }
