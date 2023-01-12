@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
 import modelDominio.Jogador;
+import modelDominio.Usuario;
 
 /**
  *
@@ -61,7 +62,23 @@ class TrataCliente extends Thread{
             String mensagemEnviar = "";
             while (!mensagemRecebida.equals("fim")) {
                 System.out.println("Recebido do cliente: " + mensagemRecebida);
-                if (mensagemRecebida.equals("cadastroJogador")) {                    
+                 if (mensagemRecebida.equals("autenticaUsuario")) {
+                    System.out.println("Pedido para autenticar usuário!");
+                    out.writeObject("Ok");
+                    Usuario usuario = (Usuario) in.readObject();
+                    // momento para consultar banco e verificar se usuario e senha conferem
+                    // SIMULANDO
+                    if (usuario.getNome().equals("Dimas") && usuario.getSenha().equals("123456")) {
+                        // caso dê certo, pode ser pego todas as informações de usuário que estão no banco e já retornar ao cliente com tudo pronto (isso poderá ser útil posteriormente)
+                        // SIMULANDO
+                        usuario.setEmail("dimas@ifsul.com");
+                        System.out.println("Usuário ok!");
+                    } else {
+                        System.out.println("Usuário e senha não conferem!");
+                        usuario = null;
+                    }
+                    out.writeObject(usuario);
+                 } else if (mensagemRecebida.equals("cadastroJogador")) {                    
                     out.writeObject("Ok");
                     Jogador jogador = (Jogador) in.readObject();
                     listaJogadores.add(jogador);

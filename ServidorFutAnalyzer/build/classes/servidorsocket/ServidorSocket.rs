@@ -1,2 +1,0 @@
-servidorsocket.TrataCliente
-servidorsocket.ServidorSocket
