@@ -68,7 +68,7 @@ class TrataCliente extends Thread{
                     Usuario usuario = (Usuario) in.readObject();
                     // momento para consultar banco e verificar se usuario e senha conferem
                     // SIMULANDO
-                    if (usuario.getNome().equals("Dimas") && usuario.getSenha().equals("123456")) {
+                    if (usuario.getUsuario().equals("Dimas") && usuario.getSenha().equals("123456")) {
                         // caso dê certo, pode ser pego todas as informações de usuário que estão no banco e já retornar ao cliente com tudo pronto (isso poderá ser útil posteriormente)
                         // SIMULANDO
                         usuario.setEmail("dimas@ifsul.com");
