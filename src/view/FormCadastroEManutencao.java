@@ -8,7 +8,7 @@ package view;
  *
  * @author gabif
  */
-public class FormCadastroEManutencao extends javax.swing.JFrame {
+public class FormCadastroEManutencao extends javax.swing.JDialog {
 
     /**
      * Creates new form FormCadastroEManutencao

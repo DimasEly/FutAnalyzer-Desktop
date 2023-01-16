@@ -142,6 +142,7 @@ public class FormLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //CHAMAR A TELA DE RECUPERAÇÃO DE SENHA
+        
     }//GEN-LAST:event_jBEsqueceuSenhaMouseClicked
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed

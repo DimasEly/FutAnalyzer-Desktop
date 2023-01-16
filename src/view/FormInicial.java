@@ -15,6 +15,8 @@ public class FormInicial extends javax.swing.JDialog {
      */
     public FormInicial() {
         initComponents();
+        
+        jLNomeUsuario.setText(FutAnalyzer.ccont.usuario.getNome());
     }
 
     /**
@@ -26,51 +28,80 @@ public class FormInicial extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jBJogadores = new javax.swing.JButton();
-        jBAssistenteEArtilheiro = new javax.swing.JButton();
+        jBArtilheirosAssistentes = new javax.swing.JButton();
+        jLNomeUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jBJogadores.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jBJogadores.setText("Jogadores");
+        jLabel1.setText("Você deseja:");
 
-        jBAssistenteEArtilheiro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jBAssistenteEArtilheiro.setText("<html>Melhor Artilheiro \ne Assistente<html>");
-        jBAssistenteEArtilheiro.setActionCommand("Melhor Artilheiro  \ne Assistente");
-        jBAssistenteEArtilheiro.addActionListener(new java.awt.event.ActionListener() {
+        jBJogadores.setText("Visualizar jogadores");
+        jBJogadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAssistenteEArtilheiroActionPerformed(evt);
+                jBJogadoresActionPerformed(evt);
             }
         });
+
+        jBArtilheirosAssistentes.setText("\"Melhor artilheiro e\nassistente\"");
+        jBArtilheirosAssistentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBArtilheirosAssistentesActionPerformed(evt);
+            }
+        });
+
+        jLNomeUsuario.setText("Seja Bem Vindo(a):");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jBAssistenteEArtilheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBArtilheirosAssistentes, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLNomeUsuario)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBAssistenteEArtilheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(jLNomeUsuario)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBArtilheirosAssistentes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBAssistenteEArtilheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAssistenteEArtilheiroActionPerformed
+    private void jBJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBJogadoresActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jBAssistenteEArtilheiroActionPerformed
+        FormVisualizacaoJogadores form = new FormVisualizacaoJogadores();
+        form.setModal(true);
+        form.setVisible(true);
+    }//GEN-LAST:event_jBJogadoresActionPerformed
+
+    private void jBArtilheirosAssistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBArtilheirosAssistentesActionPerformed
+        // TODO add your handling code here:
+        FormArtilheirosEAssistentes form = new FormArtilheirosEAssistentes();
+        form.setModal(true);
+        form.setVisible(true);
+    }//GEN-LAST:event_jBArtilheirosAssistentesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,7 +139,9 @@ public class FormInicial extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBAssistenteEArtilheiro;
+    private javax.swing.JButton jBArtilheirosAssistentes;
     private javax.swing.JButton jBJogadores;
+    private javax.swing.JLabel jLNomeUsuario;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

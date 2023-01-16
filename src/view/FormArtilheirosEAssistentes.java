@@ -8,7 +8,7 @@ package view;
  *
  * @author gabif
  */
-public class FormArtilheirosEAssistentes extends javax.swing.JFrame {
+public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
 
     /**
      * Creates new form FormArtilheirosEAssistentes

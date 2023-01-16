@@ -8,7 +8,7 @@ package view;
  *
  * @author gabif
  */
-public class FormVisualizacaoJogadores extends javax.swing.JFrame {
+public class FormVisualizacaoJogadores extends javax.swing.JDialog {
 
     /**
      * Creates new form FormVisualizacaoJogadores
@@ -49,6 +49,11 @@ public class FormVisualizacaoJogadores extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
 
         jBVoltar.setText("Voltar");
         jBVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +105,25 @@ public class FormVisualizacaoJogadores extends javax.swing.JFrame {
 
     private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jBVoltarActionPerformed
+
+     public void atualizaTabela(){
+        /*if(jCBFiltro.getSelectedIndex()==0){
+            marcaModel = new MarcaTableModel(BikeShopcliente.ccont.marcaLista());
+        }else if(){
+            
+        }*/
+        //jTMarcas.setModel(marcaModel);
+    }
+     
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        // TODO add your handling code here:
+        FormCadastroEManutencao form = new FormCadastroEManutencao();
+        form.setModal(true);
+        form.setVisible(true);
+        atualizaTabela();
+    }//GEN-LAST:event_jBCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
