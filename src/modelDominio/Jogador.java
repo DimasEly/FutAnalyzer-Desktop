@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 public class Jogador implements Serializable {
     private static final long serialVersionUID = 123L;
+    
     private String nome;
     private int overall;
     private int gol;
@@ -28,6 +29,10 @@ public class Jogador implements Serializable {
         this.nome = nome;
         this.overall = overall;
         this.gol = gol;
+    }
+
+    public Jogador(String nome) {
+        this.nome = nome;
     }
 
     public String getNome() {

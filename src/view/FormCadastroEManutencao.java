@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import modelDominio.Jogador;
+
 /**
  *
  * @author gabif
@@ -36,9 +39,12 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         jBExcluir = new javax.swing.JButton();
         jBCadastrarSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jBVoltar.setText("Voltar");
+        jBVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVoltarActionPerformed(evt);
+            }
+        });
 
         jLNome.setText("Nome");
 
@@ -49,6 +55,11 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         jBExcluir.setText("Excluir");
 
         jBCadastrarSalvar.setText("Cadastrar/Salvar");
+        jBCadastrarSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,6 +116,55 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBVoltarActionPerformed
+
+    private void jBCadastrarSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarSalvarActionPerformed
+        // TODO add your handling code here:
+        
+        //verificando se os campos são válidos
+        if(!jTFNome.getText().equals("")){
+            if(!jTFNumero.getText().equals("")){
+                if(!jTFOverall.getText().equals("")){
+            
+                    //criando o jogador
+                    Jogador jogador = new Jogador(jTFNome.getText());
+                    
+                    //chamando o servidor para executar a função de inserir novo jogador
+                    String msg = FutAnalyzer.ccont.inserirJogador(jogador);
+                    
+                    //caso servidor responda com ok
+                    if (msg.equals("ok")) {
+                        JOptionPane.showMessageDialog(this, "Jogador cadastrado com sucesso!",
+                                this.getTitle(), JOptionPane.INFORMATION_MESSAGE);
+                        jTFNome.setText("");
+                        jTFNome.requestFocus();
+                    } else {
+                        //caso não
+                        JOptionPane.showMessageDialog(this, "Jogador não foi cadastrado!",
+                                this.getTitle(), JOptionPane.ERROR_MESSAGE);
+                        jTFNome.requestFocus();
+                    }
+                    
+                }else{
+                    JOptionPane.showMessageDialog(this, "ERRO: Preencha o campo 'Overall'! ",
+                            this.getTitle(),JOptionPane.ERROR_MESSAGE);
+                    jTFOverall.requestFocus();
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "ERRO: Preencha o campo 'Número'! ",
+                        this.getTitle(), JOptionPane.ERROR_MESSAGE);
+                jTFNumero.requestFocus();
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "ERRO: Preencha o campo 'Nome'!",
+                    this.getTitle(),JOptionPane.ERROR_MESSAGE);
+            jTFNome.requestFocus();
+        }
+    }//GEN-LAST:event_jBCadastrarSalvarActionPerformed
 
     /**
      * @param args the command line arguments
