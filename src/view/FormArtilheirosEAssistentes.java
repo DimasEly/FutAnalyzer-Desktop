@@ -4,6 +4,8 @@
  */
 package view;
 
+import modelDominio.Jogador;
+
 /**
  *
  * @author gabif
@@ -28,16 +30,13 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
 
         jBVoltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTJogadores = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jBVoltar.setText("Voltar");
-        jBVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBVoltarActionPerformed(evt);
-            }
-        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTJogadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -63,7 +62,7 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTJogadores);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,6 +95,21 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jBVoltarActionPerformed
 
+    private void jtMarcasMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        //Criando o formulário de cadastro passando a Marca selecionada como parâmetro
+        //O formulário de cadastro recebe uma Raça como parâmetro, quando for para editar 
+        // um registro. Note que o método getMarca foi implementado anteriormente no 
+        // TableModelo
+        Jogador marca = jogadorModel.getMarca(jtMarcas.getSelectedRow());
+        FormCadastroMarca form = new FormCadastroMarca(marca);
+        // abrindo formulario modal (Só é possível quando o formulário for do tipo JDialog
+        form.setModal(true);
+        // Como foi setado para o formulário ser MODAL. Aqui o sistema ficará travado
+        form.setVisible(true);
+        // Quando o usuário fechar o cadastro de Marcas deve-se novamente atualizar a tabela
+        atualizarTabela();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -134,6 +148,6 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBVoltar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTJogadores;
     // End of variables declaration//GEN-END:variables
 }

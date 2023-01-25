@@ -16,6 +16,7 @@ public class Jogador implements Serializable {
     private String nome;
     private int overall;
     private int gol;
+    private int cod;
 
     public int getGol() {
         return gol;
@@ -49,6 +50,14 @@ public class Jogador implements Serializable {
 
     public void setOverall(int overall) {
         this.overall = overall;
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
     }
 }
 
