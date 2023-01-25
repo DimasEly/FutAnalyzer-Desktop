@@ -5,6 +5,7 @@
 package view;
 
 import modelDominio.Jogador;
+import view.tableModel.JogadorTableModel;
 
 /**
  *
@@ -12,6 +13,9 @@ import modelDominio.Jogador;
  */
 public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
 
+    // TableModel da Tabela de Marcas que será utilizada 
+    private JogadorTableModel jogadorModel;
+    
     /**
      * Creates new form FormArtilheirosEAssistentes
      */
@@ -95,19 +99,16 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jBVoltarActionPerformed
 
-    private void jtMarcasMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        //Criando o formulário de cadastro passando a Marca selecionada como parâmetro
-        //O formulário de cadastro recebe uma Raça como parâmetro, quando for para editar 
-        // um registro. Note que o método getMarca foi implementado anteriormente no 
-        // TableModelo
-        Jogador marca = jogadorModel.getMarca(jtMarcas.getSelectedRow());
-        FormCadastroMarca form = new FormCadastroMarca(marca);
-        // abrindo formulario modal (Só é possível quando o formulário for do tipo JDialog
-        form.setModal(true);
-        // Como foi setado para o formulário ser MODAL. Aqui o sistema ficará travado
-        form.setVisible(true);
-        // Quando o usuário fechar o cadastro de Marcas deve-se novamente atualizar a tabela
+    private void jtJogadoresMouseClicked(java.awt.event.MouseEvent evt) {                                      
         atualizarTabela();
+    }
+    
+    public void atualizarTabela() {
+        
+            jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorLista());
+        
+
+        jTJogadores.setModel(jogadorModel);
     }
     
     /**
