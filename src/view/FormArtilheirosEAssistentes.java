@@ -39,6 +39,11 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jBVoltar.setText("Voltar");
+        jBVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVoltarActionPerformed(evt);
+            }
+        });
 
         jTJogadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,10 +109,9 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
     }
     
     public void atualizarTabela() {
+        // carregando a tabela com os joadores
+        jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.JogadorLista());
         
-            jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorLista());
-        
-
         jTJogadores.setModel(jogadorModel);
     }
     

@@ -38,7 +38,7 @@ public class Principal {
             ServerSocket servidor = new ServerSocket(12345);
             System.out.println("Servidor inicializado. Aguardando conexão...");
             ConectaServidor s1 = new ConectaServidor(servidor, con);
-            
+            s1.start();
             Usuario usuario = new Usuario("123456", "Dimas");
             
         } catch (IOException e) {

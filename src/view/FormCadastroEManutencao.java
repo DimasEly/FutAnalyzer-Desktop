@@ -39,12 +39,9 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         jBExcluir = new javax.swing.JButton();
         jBCadastrarSalvar = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
         jBVoltar.setText("Voltar");
-        jBVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBVoltarActionPerformed(evt);
-            }
-        });
 
         jLNome.setText("Nome");
 

@@ -27,7 +27,7 @@ public class Conector {
             con = DriverManager.getConnection(url + banco, usuario, senha);
             return con;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Verifique se o Mu SQL(XAMPP) está ligado");
+            JOptionPane.showMessageDialog(null, "Verifique se o My SQL(XAMPP) está ligado");
             e.printStackTrace();
             return null;
         }
