@@ -33,6 +33,8 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
         jLFiltro = new javax.swing.JLabel();
         jTFFiltro = new javax.swing.JTextField();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -61,12 +63,6 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
         });
 
         jLFiltro.setText("Filtro");
-
-        jTFFiltro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFFiltroActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -4,12 +4,18 @@
  */
 package view;
 
+import modelDominio.Jogador;
+import view.tableModel.JogadorTableModel;
+
 /**
  *
  * @author gabif
  */
 public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
 
+    // TableModel da Tabela de Marcas que será utilizada 
+    private JogadorTableModel jogadorModel;
+    
     /**
      * Creates new form FormArtilheirosEAssistentes
      */
@@ -28,16 +34,13 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
 
         jBVoltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTJogadores = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jBVoltar.setText("Voltar");
-        jBVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBVoltarActionPerformed(evt);
-            }
-        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTJogadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -63,7 +66,7 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTJogadores);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,6 +99,18 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jBVoltarActionPerformed
 
+    private void jtJogadoresMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        atualizarTabela();
+    }
+    
+    public void atualizarTabela() {
+        
+            jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorLista());
+        
+
+        jTJogadores.setModel(jogadorModel);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -134,6 +149,6 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBVoltar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTJogadores;
     // End of variables declaration//GEN-END:variables
 }

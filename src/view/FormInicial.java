@@ -33,7 +33,7 @@ public class FormInicial extends javax.swing.JDialog {
         jBArtilheirosAssistentes = new javax.swing.JButton();
         jLNomeUsuario = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Você deseja:");
 
@@ -44,7 +44,7 @@ public class FormInicial extends javax.swing.JDialog {
             }
         });
 
-        jBArtilheirosAssistentes.setText("\"Melhor artilheiro e\nassistente\"");
+        jBArtilheirosAssistentes.setText("Artilheiros e Assistentes");
         jBArtilheirosAssistentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBArtilheirosAssistentesActionPerformed(evt);

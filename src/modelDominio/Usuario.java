@@ -16,6 +16,7 @@ public class Usuario implements Serializable {
     private String senha;
     private String usuario;
     private String email;
+    private int cod;
 
     public Usuario(String senha, String usuario) {
         this.senha = senha;
@@ -59,5 +60,13 @@ public class Usuario implements Serializable {
     
     public String getEmail(){
         return email;
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
     }
 }
