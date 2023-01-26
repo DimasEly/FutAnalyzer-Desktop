@@ -16,6 +16,7 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.Connection;
+import modelDominio.Usuario;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -37,6 +38,8 @@ public class Principal {
             ServerSocket servidor = new ServerSocket(12345);
             System.out.println("Servidor inicializado. Aguardando conexão...");
             ConectaServidor s1 = new ConectaServidor(servidor, con);
+            
+            Usuario usuario = new Usuario("123456", "Dimas");
             
         } catch (IOException e) {
             e.printStackTrace();

@@ -20,7 +20,7 @@ public class Conector {
     public static Connection getConnection(){
         try{
             String url = "jdbc:mysql://localhost:3306/"; //caminho do banco e porta 
-            String banco = "FutAnalyzer";                      //nome da base
+            String banco = "futanalyzer";                      //nome da base
             String usuario = "root";                       //usuário para acesso
             String senha = "";                  //senha para acesso
             
