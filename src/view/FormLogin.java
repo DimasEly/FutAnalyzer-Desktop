@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import modelDominio.Usuario;
 
 /**
@@ -12,11 +14,14 @@ import modelDominio.Usuario;
  */
 public class FormLogin extends javax.swing.JFrame {
 
+    
+    
     /**
      * Creates new form TelaLogin
      */
     public FormLogin() {
         initComponents();
+        
     }
 
     /**
@@ -33,10 +38,10 @@ public class FormLogin extends javax.swing.JFrame {
         Senha = new javax.swing.JLabel();
         jTFSenha = new javax.swing.JPasswordField();
         jBEsqueceuSenha = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jBSair = new javax.swing.JButton();
         jTFLogin = new javax.swing.JTextField();
         jLErro = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,8 +69,6 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Logo");
-
         jBSair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jBSair.setText("Sair");
         jBSair.addActionListener(new java.awt.event.ActionListener() {
@@ -84,15 +87,14 @@ public class FormLogin extends javax.swing.JFrame {
         jLErro.setForeground(new java.awt.Color(249, 0, 0));
         jLErro.setText("Usuário e/ou senha incorreta!");
 
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -108,15 +110,18 @@ public class FormLogin extends javax.swing.JFrame {
                             .addComponent(jBEsqueceuSenha)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(jLErro)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                        .addComponent(jLErro))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(83, 83, 83)
+                .addComponent(jLabel2)
+                .addGap(78, 78, 78)
                 .addComponent(Login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTFLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,16 +155,15 @@ public class FormLogin extends javax.swing.JFrame {
         String login = jTFLogin.getText();
         String senha = jTFSenha.getText();
         Usuario usuario = new Usuario(login, senha);
-        Usuario usuarioSelecionado = 
-                FutAnalyzer.ccont.efetuarLogin(usuario);
-        if (usuarioSelecionado == null){
+        Usuario usuarioSelecionado = FutAnalyzer.ccont.efetuarLogin(usuario);
+        //if (usuarioSelecionado == null){
             jLErro.setVisible(true);
-        } else {
+        //} else {
             FutAnalyzer.ccont.usuario = usuarioSelecionado;
             FormInicial formInicial = new FormInicial();
             formInicial.setVisible(true);
             dispose();
-        }
+        //}
         
     }//GEN-LAST:event_jBEntrarActionPerformed
 
@@ -224,7 +228,7 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jBEsqueceuSenha;
     private javax.swing.JButton jBSair;
     private javax.swing.JLabel jLErro;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTFLogin;
     private javax.swing.JPasswordField jTFSenha;
     // End of variables declaration//GEN-END:variables
