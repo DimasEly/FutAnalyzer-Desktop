@@ -12,31 +12,14 @@ import java.io.Serializable;
  */
 public class Usuario implements Serializable {
     public static final long serialVersionUID = 321L;
-    private String nome;
-    private String senha;
     private String usuario;
+    private String senha;
     private String email;
 
-    public Usuario(String senha, String usuario) {
-        this.senha = senha;
+    public Usuario(String usuario, String senha) {
         this.usuario = usuario;
-    }
-
-    public Usuario(String nome, String senha, String usuario) {
-        this.nome = nome;
         this.senha = senha;
-        this.usuario = usuario;
-        this.email = email;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getSenha() {
         return senha;
     }
@@ -60,4 +43,11 @@ public class Usuario implements Serializable {
     public String getEmail(){
         return email;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "usuario=" + usuario + ", senha=" + senha + ", email=" + email + '}';
+    }
+    
+    
 }

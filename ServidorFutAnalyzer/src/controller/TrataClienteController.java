@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import model.JogadorDao;
+import model.UsuarioDao;
+import modelDominio.Jogador;
+import modelDominio.Usuario;
 
 /**
  *
@@ -39,8 +43,29 @@ public class TrataClienteController extends Thread{
                 System.out.println("Cliente " + idUnico + " enviou o comando: "
                         + comando);
                 // Qual é o comando que o cliente quer que o servidor execute?
-                if (comando.equalsIgnoreCase("")) {
-
+                if (comando.equalsIgnoreCase("UsuarioEfetuarLogin")) {
+                        out.writeObject("ok");
+                        Usuario usuario = (Usuario) in.readObject();
+                        
+                        UsuarioDao dao = new UsuarioDao();
+                        Usuario usuarioSelecionado = dao.efetuarLogin(usuario);
+                        
+                        out.writeObject(usuarioSelecionado);
+                } else if(comando.equalsIgnoreCase("JogadorInserir")){
+                    out.writeObject("ok");
+                    Jogador jogador = (Jogador) in.readObject();
+                    
+                    JogadorDao dao = new JogadorDao();
+                    if(dao.inserir(jogador) == -1){
+                        out.writeObject("ok");
+                    } else {
+                        out.writeObject("nok");
+                    }
+                } else if(comando.equalsIgnoreCase("JogadorLista")){
+                            out.writeObject("ok");
+                            
+                            JogadorDao dao = new JogadorDao();
+                            out.writeObject(dao.getLista());
                 } else {
                     // Comando inválido e não reconhecido!
                     // Cliente pediu um comando que o servidor não conhece.

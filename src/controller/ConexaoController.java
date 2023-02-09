@@ -36,8 +36,10 @@ public class ConexaoController {
             out.writeObject(usuario);
             Usuario usuarioSelecionado = 
                     (Usuario) in.readObject();
+            
             return usuarioSelecionado;
         } catch (Exception e){
+            System.out.println(e);
             return null;
         }
     }

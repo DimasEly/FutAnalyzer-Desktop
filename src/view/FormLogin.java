@@ -152,18 +152,18 @@ public class FormLogin extends javax.swing.JFrame {
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
         // TODO add your handling code here:
-        String login = jTFLogin.getText();
+        String usuario = jTFLogin.getText();
         String senha = jTFSenha.getText();
-        Usuario usuario = new Usuario(login, senha);
-        Usuario usuarioSelecionado = FutAnalyzer.ccont.efetuarLogin(usuario);
-        //if (usuarioSelecionado == null){
+        Usuario usuario1 = new Usuario(usuario, senha);
+        Usuario usuarioSelecionado = FutAnalyzer.ccont.efetuarLogin(usuario1);
+        if (usuarioSelecionado == null){
             jLErro.setVisible(true);
-        //} else {
+        } else {
             FutAnalyzer.ccont.usuario = usuarioSelecionado;
             FormInicial formInicial = new FormInicial();
             formInicial.setVisible(true);
             dispose();
-        //}
+        }
         
     }//GEN-LAST:event_jBEntrarActionPerformed
 
