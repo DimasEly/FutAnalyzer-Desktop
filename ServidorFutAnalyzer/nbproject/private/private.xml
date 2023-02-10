@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/magal/Documents/GitHub/FutAnalyzer-Desktop/ServidorFutAnalyzer/src/view/Principal.java</file>
             <file>file:/C:/Users/magal/Documents/GitHub/FutAnalyzer-Desktop/ServidorFutAnalyzer/src/modelDominio/Usuario.java</file>
-            <file>file:/C:/Users/magal/Documents/GitHub/FutAnalyzer-Desktop/ServidorFutAnalyzer/src/futanalyzerservidor/FutAnalyzerServidor.java</file>
+            <file>file:/C:/Users/magal/Documents/GitHub/FutAnalyzer-Desktop/ServidorFutAnalyzer/src/model/JogadorDao.java</file>
+            <file>file:/C:/Users/magal/Documents/GitHub/FutAnalyzer-Desktop/ServidorFutAnalyzer/src/model/UsuarioDao.java</file>
             <file>file:/C:/Users/magal/Documents/GitHub/FutAnalyzer-Desktop/ServidorFutAnalyzer/src/factory/Conector.java</file>
+            <file>file:/C:/Users/magal/Documents/GitHub/FutAnalyzer-Desktop/ServidorFutAnalyzer/src/controller/TrataClienteController.java</file>
             <file>file:/C:/Users/magal/Documents/GitHub/FutAnalyzer-Desktop/ServidorFutAnalyzer/src/modelDominio/Jogador.java</file>
         </group>
     </open-files>
