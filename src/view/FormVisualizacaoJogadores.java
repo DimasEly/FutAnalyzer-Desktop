@@ -119,7 +119,7 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
      
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         // TODO add your handling code here:
-        FormCadastroEManutencao form = new FormCadastroEManutencao();
+        FormCadastroEManutencao form = new FormCadastroEManutencao(null);
         form.setModal(true);
         form.setVisible(true);
         atualizaTabela();

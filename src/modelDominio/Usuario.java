@@ -14,19 +14,19 @@ public class Usuario implements Serializable {
     public static final long serialVersionUID = 321L;
     private String nome;
     private String senha;
-    private String usuario;
+    private String loginUsuario;
     private String email;
     private int cod;
 
-    public Usuario(String usuario, String senha) {
-        this.usuario = usuario;
+    public Usuario(String loginUsuario, String senha) {
+        this.loginUsuario = loginUsuario;
         this.senha = senha;
     }
 
     public Usuario(String nome, String senha, String usuario) {
         this.nome = nome;
         this.senha = senha;
-        this.usuario = usuario;
+        this.loginUsuario = usuario;
         this.email = email;
     }
 
@@ -46,20 +46,20 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getLoginUsuario() {
+        return loginUsuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setLoginUsuario(String loginUsuario) {
+        this.loginUsuario = loginUsuario;
     }
-    
-    public void setEmail(String email){
-        this.email = email;
-    }
-    
-    public String getEmail(){
+
+    public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getCod() {

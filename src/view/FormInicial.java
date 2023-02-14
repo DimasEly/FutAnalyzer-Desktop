@@ -17,6 +17,7 @@ public class FormInicial extends javax.swing.JDialog {
         initComponents();
         
         jLNomeUsuario.setText(FutAnalyzer.ccont.usuario.getNome());
+        
     }
 
     /**

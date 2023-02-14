@@ -60,6 +60,38 @@ public class ConexaoController {
         }
     }
     
+    public String jogadorExcluir (Jogador jogador){
+        String msg = "";
+        
+        try{
+            out.writeObject("JogadorExcluir");
+            msg = (String) in.readObject();  //lendo o ok
+            out.writeObject(jogador);        //escrevendo a Marca
+            msg = (String) in.readObject();  //lendo o ok
+            
+            return msg;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    public String jogadorAlterar(Jogador jogador){
+        String msg = "";
+        
+        try{
+            out.writeObject("JogadorAlterar");
+            msg = (String) in.readObject(); // lendo ok
+            out.writeObject(jogador);       // escrevendo o Jogador
+            msg = (String) in.readObject(); // lendo ok
+            
+            return msg;
+        } catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
     public ArrayList<Jogador> JogadorLista(){
         String msg;
         try{
