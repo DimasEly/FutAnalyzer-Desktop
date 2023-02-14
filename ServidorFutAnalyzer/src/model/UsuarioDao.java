@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import modelDominio.Usuario;
 
 /**
@@ -55,4 +56,32 @@ public class UsuarioDao {
             return null;
     }
     }
+    
+   public int usuarioInserir(Usuario user){
+       PreparedStatement stmt = null;
+       try{
+           try{
+               con.setAutoCommit(false);
+               String sql = "insert into Usuario(usuario, email, senha) values(?, ?, ?)";
+               stmt = con.prepareStatement(sql);
+               stmt.setString(1, user.getUsuario());
+               stmt.setString(2, user.getEmail());
+               stmt.setString(3, user.getSenha());
+               stmt.execute();
+               con.commit();
+               return -1;
+           } catch (SQLException e) {
+               return e.getErrorCode();
+           }
+       } finally{
+           try{
+               stmt.close();
+               con.setAutoCommit(true);
+               con.close();
+           } catch(SQLException e){
+               e.printStackTrace();
+               return e.getErrorCode();
+           }
+       }
+   }
 }
