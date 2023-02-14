@@ -12,7 +12,6 @@ import model.JogadorDao;
 import model.UsuarioDao;
 import modelDominio.Jogador;
 import modelDominio.Usuario;
-
 /**
  *
  * @author magal
@@ -51,6 +50,13 @@ public class TrataClienteController extends Thread{
                         Usuario usuarioSelecionado = dao.efetuarLogin(usuario);
                         
                         out.writeObject(usuarioSelecionado);
+                } else if(comando.equalsIgnoreCase("UsuarioInserir")){
+                    out.writeObject("ok");
+                    Usuario user = (Usuario) in.readObject();
+                    
+                    UsuarioDao dao = new UsuarioDao();
+                   dao.usuarioInserir(user);
+                   out.writeObject("ok");
                 } else if(comando.equalsIgnoreCase("JogadorInserir")){
                     out.writeObject("ok");
                     Jogador jogador = (Jogador) in.readObject();
@@ -60,7 +66,7 @@ public class TrataClienteController extends Thread{
                         out.writeObject("ok");
                     } else {
                         out.writeObject("nok");
-                    }
+                    }             
                 } else if(comando.equalsIgnoreCase("JogadorLista")){
                             out.writeObject("ok");
                             

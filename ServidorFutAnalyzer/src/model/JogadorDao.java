@@ -46,7 +46,7 @@ public class JogadorDao {
         try{
             try{
                 con.setAutoCommit(false);
-                String sql = "insert into Jogador (nome) values(?)";
+                String sql = "insert into Jogador values(?)";
                 stmt = con.prepareStatement(sql);
                 stmt.setString(1, jogador.getNome());
                 stmt.setInt(2, jogador.getOverall());
