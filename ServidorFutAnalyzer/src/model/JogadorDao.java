@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modelDominio.Jogador;
+import modelDominio.Usuario;
 /**
  *
  * @author magal
@@ -31,7 +32,7 @@ public class JogadorDao {
         ResultSet res = stmt.executeQuery("select * from jogador");
         
         while (res.next()){
-            Jogador jogador = new Jogador(res.getString("nome"), res.getInt("overall"), res.getInt("gol"));
+            Jogador jogador = new Jogador(res.getString("nome"), res.getInt("overall"), res.getInt("gol"), res.getInt("Usuario_id"));
             listaJogadores.add(jogador);
         }
         res.close();
@@ -46,14 +47,17 @@ public class JogadorDao {
     
     public int inserir (Jogador jogador){
         PreparedStatement stmt = null;
+      
         try{
             try{
                 con.setAutoCommit(false);
-                String sql = "insert into Jogador (nome, overall, gols) values(?, ?, ?)";
+                String sql = "insert into Jogador (nome, overall, gols, Usuario_id) values(?, ?, ?, ?)";
                 stmt = con.prepareStatement(sql);
                 stmt.setString(1, jogador.getNome());
                 stmt.setInt(2, jogador.getOverall());
                 stmt.setInt(3, jogador.getGol());
+                
+                stmt.setInt(4, jogador.getIdUsuario());
                 stmt.execute();
                 con.commit();
                 return -1;

@@ -40,7 +40,7 @@ public class UsuarioTableModel extends AbstractTableModel {
 
         switch (columnIndex) {
             case 0: return usuario.getCod();
-            case 1: return usuario.getNome();
+            case 1: return usuario.getUsuario();
             case 3: return usuario.getSenha();
             case 4: return usuario.getEmail();
             default: return "";

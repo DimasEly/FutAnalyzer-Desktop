@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ConexaoController;
 import javax.swing.JOptionPane;
 import modelDominio.Jogador;
 
@@ -41,10 +42,8 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         jBVoltar = new javax.swing.JButton();
         jLNome = new javax.swing.JLabel();
         jLOverall = new javax.swing.JLabel();
-        jLNumero = new javax.swing.JLabel();
         jTFNome = new javax.swing.JTextField();
         jTFOverall = new javax.swing.JTextField();
-        jTFNumero = new javax.swing.JTextField();
         jBExcluir = new javax.swing.JButton();
         jBSalvar = new javax.swing.JButton();
 
@@ -60,8 +59,6 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         jLNome.setText("Nome");
 
         jLOverall.setText("Overall");
-
-        jLNumero.setText("Número");
 
         jBExcluir.setText("Excluir");
         jBExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +80,6 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLNumero)
                     .addComponent(jLOverall)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -93,12 +89,10 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                             .addGap(106, 106, 106)
                             .addComponent(jLNome))))
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTFNome, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                        .addComponent(jTFOverall))
-                    .addComponent(jTFNumero))
-                .addGap(94, 94, 94))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTFNome, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                    .addComponent(jTFOverall))
+                .addContainerGap(94, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(123, Short.MAX_VALUE)
                 .addComponent(jBExcluir)
@@ -119,11 +113,7 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLOverall)
                     .addComponent(jTFOverall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLNumero)
-                    .addComponent(jTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBExcluir)
                     .addComponent(jBSalvar))
@@ -143,14 +133,18 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         
         //verificando se os campos são válidos
         if(!jTFNome.getText().equals("")){
-            if(!jTFNumero.getText().equals("")){
-                if(!jTFOverall.getText().equals("")){
             
+                if(!jTFOverall.getText().equals("")){
+                    
+                    String nomeJogador = jTFNome.getText();
+                    int over = Integer.parseInt(jTFOverall.getText());
                     //criando o jogador
-                    Jogador jogador = new Jogador(jTFNome.getText());
+                    
+                    Jogador jogador = new Jogador(nomeJogador, over, 0, FutAnalyzer.ccont.getUsuarioLogado().getCod());
                     
                     //chamando o servidor para executar a função de inserir novo jogador
                     String msg = FutAnalyzer.ccont.inserirJogador(jogador);
+                    System.out.println("idUsuario:" + jogador.getIdUsuario());
                     
                     if (codigo == -1){
                         msg = FutAnalyzer.ccont.inserirJogador(jogador);
@@ -168,8 +162,6 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                                 this.getTitle(), JOptionPane.INFORMATION_MESSAGE);
                         jTFNome.setText("");
                         jTFNome.requestFocus();
-                        jTFNumero.setText("");
-                        jTFNumero.requestFocus();
                         jTFOverall.setText("");
                         jTFOverall.requestFocus();
                     } else {
@@ -177,7 +169,6 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(this, "Jogador não foi cadastrado!",
                                 this.getTitle(), JOptionPane.ERROR_MESSAGE);
                         jTFNome.requestFocus();
-                        jTFNumero.requestFocus();
                         jTFOverall.requestFocus();
                     }
                     
@@ -186,11 +177,7 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                             this.getTitle(),JOptionPane.ERROR_MESSAGE);
                     jTFOverall.requestFocus();
                 }
-            }else{
-                JOptionPane.showMessageDialog(this, "ERRO: Preencha o campo 'Número'! ",
-                        this.getTitle(), JOptionPane.ERROR_MESSAGE);
-                jTFNumero.requestFocus();
-            }
+         
         }else{
             JOptionPane.showMessageDialog(this, "ERRO: Preencha o campo 'Nome'!",
                     this.getTitle(),JOptionPane.ERROR_MESSAGE);
@@ -258,10 +245,8 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
     private javax.swing.JButton jBSalvar;
     private javax.swing.JButton jBVoltar;
     private javax.swing.JLabel jLNome;
-    private javax.swing.JLabel jLNumero;
     private javax.swing.JLabel jLOverall;
     private javax.swing.JTextField jTFNome;
-    private javax.swing.JTextField jTFNumero;
     private javax.swing.JTextField jTFOverall;
     // End of variables declaration//GEN-END:variables
 }

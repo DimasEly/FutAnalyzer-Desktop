@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ConexaoController;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import modelDominio.Usuario;
@@ -171,6 +172,7 @@ public class FormLogin extends javax.swing.JFrame {
             
             FutAnalyzer.ccont.usuario = usuarioSelecionado;
             
+            FutAnalyzer.ccont.setUsuarioLogado(usuarioSelecionado);
             FormInicial formInicial = new FormInicial();
             formInicial.setVisible(true);
             dispose();

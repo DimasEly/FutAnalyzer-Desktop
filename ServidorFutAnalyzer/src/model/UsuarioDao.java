@@ -37,14 +37,15 @@ public class UsuarioDao {
             
             stmt.setString(1, user.getUsuario());
             stmt.setString(2, user.getSenha());
+           
             
             //executando o select
             ResultSet res = stmt.executeQuery();
             
             while (res.next()){
                 //nome, senha, usuario
-                userselecionado = new Usuario(res.getString("usuario"),
-                res.getString("senha"));
+                userselecionado = new Usuario( res.getString("usuario"),
+                res.getString("senha"), res.getString("email"), res.getInt("id"));
             }
             res.close();
             stmt.close();

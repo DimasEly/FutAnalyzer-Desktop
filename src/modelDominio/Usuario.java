@@ -12,32 +12,31 @@ import java.io.Serializable;
  */
 public class Usuario implements Serializable {
     public static final long serialVersionUID = 321L;
-    private String nome;
     private String senha;
-    private String loginUsuario;
+    private String usuario;
     private String email;
     private int cod;
 
-    public Usuario(String loginUsuario, String senha) {
-        this.loginUsuario = loginUsuario;
+    public Usuario(String usuario, String senha) {
+        this.usuario = usuario;
         this.senha = senha;
     }
 
-    public Usuario(String nome, String senha, String usuario) {
-        this.nome = nome;
+    public Usuario(String senha, String usuario, String email) {
         this.senha = senha;
-        this.loginUsuario = usuario;
+        this.usuario = usuario;
         this.email = email;
     }
 
-    public String getNome() {
-        return nome;
+    public Usuario(String usuario, String senha, String email, int cod) {
+        this.senha = senha;
+        this.usuario = usuario;
+        this.email = email;
+        this.cod = cod;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    
+ 
     public String getSenha() {
         return senha;
     }
@@ -46,12 +45,12 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public String getLoginUsuario() {
-        return loginUsuario;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setLoginUsuario(String loginUsuario) {
-        this.loginUsuario = loginUsuario;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getEmail() {
@@ -69,4 +68,10 @@ public class Usuario implements Serializable {
     public void setCod(int cod) {
         this.cod = cod;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +  ", senha=" + senha + ", usuario=" + usuario + ", email=" + email + ", cod=" + cod + '}';
+    }
 }
+

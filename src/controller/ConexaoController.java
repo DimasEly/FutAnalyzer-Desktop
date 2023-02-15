@@ -20,6 +20,12 @@ public class ConexaoController {
     private int idUnico;
     
     public Usuario usuario;
+    private Usuario usuarioLogado;
+
+    public ConexaoController(Usuario usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
+    }
+    
     
     public ConexaoController(ObjectInputStream in, ObjectOutputStream out, int idUnico) {
         this.in = in;
@@ -47,7 +53,7 @@ public class ConexaoController {
     public String inserirJogador(Jogador jogador){
         String msg;
         try{
-            out.writeObject("MarcaInserir");//chamando servidor
+            out.writeObject("JogadorInserir");//chamando servidor
             msg = (String) in.readObject();
             if(msg.equals("ok")){//servidor respondendo
                 out.writeObject(jogador); //enviando jogador para o servidor
@@ -103,6 +109,14 @@ public class ConexaoController {
         } catch (Exception e){
             return null;
         }
+    }
+
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(Usuario usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
     }
     
 }

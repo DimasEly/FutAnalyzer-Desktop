@@ -15,6 +15,7 @@ import java.net.Socket;
 public class FutAnalyzer {
     
     public static ConexaoController ccont;
+    public static int idUsuario;
     
     public static void main(String[] args) {
         Socket socket;

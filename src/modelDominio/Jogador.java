@@ -18,6 +18,15 @@ public class Jogador implements Serializable {
     private int gol;
     private int cod;
 
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    private int idUsuario;
+
     public int getGol() {
         return gol;
     }
@@ -26,11 +35,26 @@ public class Jogador implements Serializable {
         this.gol = gol;
     }
 
-    public Jogador(String nome, int overall, int gol){
+    public Jogador(String nome, int overall, int gol, int idUsuario){
         this.nome = nome;
         this.overall = overall;
         this.gol = gol;
+        this.idUsuario = idUsuario;
     }
+
+    public Jogador(String nome, int overall) {
+        this.nome = nome;
+        this.overall = overall;
+    
+    }
+
+    
+    
+    public Jogador(int cod) {
+        this.cod = cod;
+    }
+    
+   
 
     public Jogador(String nome) {
         this.nome = nome;

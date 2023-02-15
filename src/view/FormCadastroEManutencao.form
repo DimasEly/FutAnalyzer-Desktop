@@ -25,7 +25,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLNumero" min="-2" max="-2" attributes="0"/>
                   <Component id="jLOverall" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -39,14 +38,11 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jTFNome" alignment="0" pref="144" max="32767" attributes="0"/>
-                      <Component id="jTFOverall" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="jTFNumero" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jTFNome" alignment="0" pref="144" max="32767" attributes="0"/>
+                  <Component id="jTFOverall" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+              <EmptySpace pref="94" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace pref="123" max="32767" attributes="0"/>
@@ -72,12 +68,7 @@
                   <Component id="jLOverall" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTFOverall" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLNumero" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFNumero" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="63" max="32767" attributes="0"/>
+              <EmptySpace pref="103" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -106,16 +97,9 @@
         <Property name="text" type="java.lang.String" value="Overall"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLNumero">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="jTFNome">
     </Component>
     <Component class="javax.swing.JTextField" name="jTFOverall">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTFNumero">
     </Component>
     <Component class="javax.swing.JButton" name="jBExcluir">
       <Properties>
