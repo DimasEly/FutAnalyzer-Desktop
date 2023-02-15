@@ -13,11 +13,20 @@ import modelDominio.Jogador;
  */
 public class FormCadastroEManutencao extends javax.swing.JDialog {
 
-    /**
-     * Creates new form FormCadastroEManutencao
-     */
-    public FormCadastroEManutencao() {
+    // quando codigo for -1 significa CADASTRO NOVO
+    // quando for diferente de -1 é ALTERAÇÃO
+    private int codigo = -1;
+    
+    public FormCadastroEManutencao(Jogador jogador) {
         initComponents();
+        
+        if ( jogador == null){ // cadastro novo
+            codigo = -1;
+            jBExcluir.setEnabled(false);
+        } else {  // alteração no registro
+            codigo = jogador.getCod();
+            jTFNome.setText(jogador.getNome());
+        }
     }
 
     /**
@@ -37,11 +46,16 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         jTFOverall = new javax.swing.JTextField();
         jTFNumero = new javax.swing.JTextField();
         jBExcluir = new javax.swing.JButton();
-        jBCadastrarSalvar = new javax.swing.JButton();
+        jBSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jBVoltar.setText("Voltar");
+        jBVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVoltarActionPerformed(evt);
+            }
+        });
 
         jLNome.setText("Nome");
 
@@ -50,11 +64,16 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         jLNumero.setText("Número");
 
         jBExcluir.setText("Excluir");
-
-        jBCadastrarSalvar.setText("Cadastrar/Salvar");
-        jBCadastrarSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCadastrarSalvarActionPerformed(evt);
+                jBExcluirActionPerformed(evt);
+            }
+        });
+
+        jBSalvar.setText("Salvar");
+        jBSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalvarActionPerformed(evt);
             }
         });
 
@@ -81,10 +100,10 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                     .addComponent(jTFNumero))
                 .addGap(94, 94, 94))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(123, Short.MAX_VALUE)
                 .addComponent(jBExcluir)
                 .addGap(64, 64, 64)
-                .addComponent(jBCadastrarSalvar)
+                .addComponent(jBSalvar)
                 .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
@@ -107,7 +126,7 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBExcluir)
-                    .addComponent(jBCadastrarSalvar))
+                    .addComponent(jBSalvar))
                 .addGap(31, 31, 31))
         );
 
@@ -119,7 +138,7 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jBVoltarActionPerformed
 
-    private void jBCadastrarSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarSalvarActionPerformed
+    private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
         // TODO add your handling code here:
         
         //verificando se os campos são válidos
@@ -133,17 +152,33 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                     //chamando o servidor para executar a função de inserir novo jogador
                     String msg = FutAnalyzer.ccont.inserirJogador(jogador);
                     
+                    if (codigo == -1){
+                        msg = FutAnalyzer.ccont.inserirJogador(jogador);
+                    } else {
+                        jogador.setCod(codigo);
+                        msg = FutAnalyzer.ccont.jogadorAlterar(jogador);
+                        if (msg.equals("ok")){
+                            dispose(); //Se deu certo a alteração, pode fechar a janela
+                        }
+                    }
+                    
                     //caso servidor responda com ok
                     if (msg.equals("ok")) {
                         JOptionPane.showMessageDialog(this, "Jogador cadastrado com sucesso!",
                                 this.getTitle(), JOptionPane.INFORMATION_MESSAGE);
                         jTFNome.setText("");
                         jTFNome.requestFocus();
+                        jTFNumero.setText("");
+                        jTFNumero.requestFocus();
+                        jTFOverall.setText("");
+                        jTFOverall.requestFocus();
                     } else {
                         //caso não
                         JOptionPane.showMessageDialog(this, "Jogador não foi cadastrado!",
                                 this.getTitle(), JOptionPane.ERROR_MESSAGE);
                         jTFNome.requestFocus();
+                        jTFNumero.requestFocus();
+                        jTFOverall.requestFocus();
                     }
                     
                 }else{
@@ -161,7 +196,27 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                     this.getTitle(),JOptionPane.ERROR_MESSAGE);
             jTFNome.requestFocus();
         }
-    }//GEN-LAST:event_jBCadastrarSalvarActionPerformed
+    }//GEN-LAST:event_jBSalvarActionPerformed
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        // TODO add your handling code here:
+        int certeza = JOptionPane.showConfirmDialog(this, "Tem certeza?", this.getTitle(), JOptionPane.YES_NO_OPTION);
+        
+        // CASO O USUÁRIO RESPONDA SIM PARA A EXCLUSÃO
+        if(certeza == JOptionPane.YES_OPTION){
+            Jogador jogador = new Jogador (codigo);
+            
+            //chamando o servidor
+            String msg = FutAnalyzer.ccont.jogadorExcluir(jogador);
+            
+            if(msg.equals("ok")) {
+                JOptionPane.showMessageDialog(this, "Jogador excluído com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Não foi possível excluir", this.getTitle(), JOptionPane.ERROR_MESSAGE);
+            }
+            dispose();
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,14 +248,14 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormCadastroEManutencao().setVisible(true);
+                new FormCadastroEManutencao(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBCadastrarSalvar;
     private javax.swing.JButton jBExcluir;
+    private javax.swing.JButton jBSalvar;
     private javax.swing.JButton jBVoltar;
     private javax.swing.JLabel jLNome;
     private javax.swing.JLabel jLNumero;

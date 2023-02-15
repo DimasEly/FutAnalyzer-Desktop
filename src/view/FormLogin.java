@@ -21,7 +21,7 @@ public class FormLogin extends javax.swing.JFrame {
      */
     public FormLogin() {
         initComponents();
-        
+        jLErro.setVisible(false);
     }
 
     /**
@@ -85,7 +85,8 @@ public class FormLogin extends javax.swing.JFrame {
 
         jLErro.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLErro.setForeground(new java.awt.Color(249, 0, 0));
-        jLErro.setText("Usuário e/ou senha incorreta!");
+        jLErro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLErro.setText("Usuário ou senha inválida!");
 
         jLabel2.setText("jLabel2");
 
@@ -109,12 +110,13 @@ public class FormLogin extends javax.swing.JFrame {
                                 .addComponent(jTFSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jBEsqueceuSenha)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jLErro))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLErro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,17 +154,29 @@ public class FormLogin extends javax.swing.JFrame {
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
         // TODO add your handling code here:
-        String usuario = jTFLogin.getText();
+        
+        //recebendo
+        String loginUsuario = jTFLogin.getText();
         String senha = jTFSenha.getText();
-        Usuario usuario1 = new Usuario(usuario, senha);
-        Usuario usuarioSelecionado = FutAnalyzer.ccont.efetuarLogin(usuario1);
-        if (usuarioSelecionado == null){
-            jLErro.setVisible(true);
-        } else {
+        
+        //criando um usuario
+        Usuario usuario = new Usuario(loginUsuario, senha);
+        
+        //conectando ao servidor
+        Usuario usuarioSelecionado = FutAnalyzer.ccont.efetuarLogin(usuario);
+        
+        //verificando credenciais
+        if (usuarioSelecionado != null){
+            jLErro.setVisible(false);
+            
             FutAnalyzer.ccont.usuario = usuarioSelecionado;
+            
             FormInicial formInicial = new FormInicial();
             formInicial.setVisible(true);
             dispose();
+        } else {
+           jLErro.setVisible(true);
+           limpaCampos();
         }
         
     }//GEN-LAST:event_jBEntrarActionPerformed
@@ -219,6 +233,11 @@ public class FormLogin extends javax.swing.JFrame {
                 new FormLogin().setVisible(true);
             }
         });
+    }
+    
+    public void limpaCampos(){
+        jTFLogin.setText("");
+        jTFSenha.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
