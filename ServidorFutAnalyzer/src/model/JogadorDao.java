@@ -84,4 +84,33 @@ public class JogadorDao {
        
     }
     
+    public int excluir (Jogador jogador){
+        PreparedStatement stmt = null;
+        try{
+            try{
+                con.setAutoCommit(false);
+                String sql = "delete from jogador where id = ?";
+                stmt.setInt(1, jogador.getCod());
+                stmt.execute();
+                con.commit();
+                return -1;
+            } catch (SQLException e){
+                try{
+                    con.rollback();
+                    return e.getErrorCode();
+                } catch (SQLException ex){
+                    return ex.getErrorCode();
+                }
+            }
+        } finally {
+            try{
+                stmt.close();
+                con.setAutoCommit(true);
+                con.close();
+            } catch (SQLException e){
+                return e.getErrorCode();
+            }
+        }
+    }
+    
 }
