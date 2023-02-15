@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import model.JogadorDao;
 import model.UsuarioDao;
 import modelDominio.Jogador;
@@ -62,16 +63,14 @@ public class TrataClienteController extends Thread{
                     Jogador jogador = (Jogador) in.readObject();
                     
                     JogadorDao dao = new JogadorDao();
-                    if(dao.inserir(jogador) == -1){
-                        out.writeObject("ok");
-                    } else {
-                        out.writeObject("nok");
-                    }             
+                    dao.inserir(jogador);
+                    out.writeObject("ok");
                 } else if(comando.equalsIgnoreCase("JogadorLista")){
                             out.writeObject("ok");
-                            
-                            JogadorDao dao = new JogadorDao();
-                            out.writeObject(dao.getLista());
+                            JogadorDao jogdao = new JogadorDao();
+                            ArrayList<Jogador> listajogadores = jogdao.getLista();
+                            out.writeObject(listajogadores);
+                                    
                 } else {
                     // Comando inválido e não reconhecido!
                     // Cliente pediu um comando que o servidor não conhece.

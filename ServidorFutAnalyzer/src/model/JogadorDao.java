@@ -25,7 +25,7 @@ public class JogadorDao {
     
     public ArrayList<Jogador> getLista(){
     Statement stmt = null;
-    ArrayList<Jogador> listaJogadores = new ArrayList<>();
+    ArrayList<Jogador> listaJogadores = new ArrayList<Jogador>();
     try{
         stmt = con.createStatement();
         ResultSet res = stmt.executeQuery("select * from jogador");
@@ -34,6 +34,9 @@ public class JogadorDao {
             Jogador jogador = new Jogador(res.getString("nome"), res.getInt("overall"), res.getInt("gol"));
             listaJogadores.add(jogador);
         }
+        res.close();
+        stmt.close();
+        con.close();
         return listaJogadores;
     } catch (SQLException e){
         System.out.println(e.getErrorCode() + "-" + e.getMessage());
@@ -46,7 +49,7 @@ public class JogadorDao {
         try{
             try{
                 con.setAutoCommit(false);
-                String sql = "insert into Jogador values(?)";
+                String sql = "insert into Jogador (nome, overall, gols) values(?, ?, ?)";
                 stmt = con.prepareStatement(sql);
                 stmt.setString(1, jogador.getNome());
                 stmt.setInt(2, jogador.getOverall());
@@ -55,10 +58,24 @@ public class JogadorDao {
                 con.commit();
                 return -1;
             } catch (SQLException e){
-                return e.getErrorCode();
+                try{
+                    con.rollback();
+                    e.printStackTrace();
+                    return e.getErrorCode();
+                } catch (SQLException ex){
+                    ex.printStackTrace();
+                    return ex.getErrorCode();
+                }
             }
         } finally {
-            
+            try{
+                stmt.close();
+                con.setAutoCommit(true);
+                con.close();
+            } catch(SQLException e){
+                e.printStackTrace();
+                return e.getErrorCode();
+            }
         }
        
     }
