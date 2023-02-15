@@ -32,7 +32,7 @@ public class JogadorDao {
         ResultSet res = stmt.executeQuery("select * from jogador");
         
         while (res.next()){
-            Jogador jogador = new Jogador(res.getString("nome"), res.getInt("overall"), res.getInt("gol"), res.getInt("Usuario_id"));
+            Jogador jogador = new Jogador(res.getString("nome"), res.getInt("overall"), res.getInt("gols"), res.getInt("Usuario_id"));
             listaJogadores.add(jogador);
         }
         res.close();

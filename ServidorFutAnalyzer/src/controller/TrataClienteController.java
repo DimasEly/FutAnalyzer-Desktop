@@ -66,7 +66,6 @@ public class TrataClienteController extends Thread{
                     dao.inserir(jogador);
                     out.writeObject("ok");
                 } else if(comando.equalsIgnoreCase("JogadorLista")){
-                            out.writeObject("ok");
                             JogadorDao jogdao = new JogadorDao();
                             ArrayList<Jogador> listajogadores = jogdao.getLista();
                             out.writeObject(listajogadores);
