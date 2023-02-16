@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import modelDominio.Jogador;
 import modelDominio.Usuario;
+import view.FutAnalyzer;
 
 /**
  *
@@ -102,9 +103,7 @@ public class ConexaoController {
         String msg;
         try{
             out.writeObject("JogadorLista");
-            msg = (String) in.readObject();
-            Usuario usuarioSelecionado = 
-                    (Usuario) in.readObject();
+            out.writeObject(FutAnalyzer.ccont.usuarioLogado);
             return (ArrayList<Jogador>)in.readObject();
         } catch (Exception e){
             return null;

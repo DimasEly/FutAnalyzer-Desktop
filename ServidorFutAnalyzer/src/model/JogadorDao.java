@@ -97,6 +97,7 @@ public class JogadorDao {
                 stmt.setString(1, jogador.getNome());
                 stmt.setInt(2, jogador.getOverall());
                 stmt.setInt(3, jogador.getCod());
+                stmt.execute();
                 con.commit();
                 return - 1;
             } catch (SQLException e){

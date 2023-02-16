@@ -35,7 +35,7 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
      */
     public FormVisualizacaoJogadores() {
         initComponents();
-        //atualizaTabela();
+        atualizaTabela();
     }
 
     /**
