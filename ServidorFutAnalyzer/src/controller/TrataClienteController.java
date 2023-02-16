@@ -67,13 +67,15 @@ public class TrataClienteController extends Thread{
                     out.writeObject("ok");
                 } else if(comando.equalsIgnoreCase("JogadorExcluir")){
                     out.writeObject("ok");
-                    Jogador jogador = (Jogador) in.readObject();
+                    int codJogador = (int) in.readObject();
                     
                     JogadorDao jogdao = new JogadorDao();
-                    jogdao.excluir(jogador);
+                    jogdao.excluir(codJogador);
+                    out.writeObject("ok");
                 } else if(comando.equalsIgnoreCase("JogadorLista")){
+                            Usuario user = (Usuario) in.readObject();
                             JogadorDao jogdao = new JogadorDao();
-                            ArrayList<Jogador> listajogadores = jogdao.getLista();
+                            ArrayList<Jogador> listajogadores = jogdao.getLista(user);
                             out.writeObject(listajogadores);
                 } else {
                     // Comando inválido e não reconhecido!
