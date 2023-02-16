@@ -87,9 +87,36 @@ public class JogadorDao {
        
     }
     
-//    public int alterar (Jogador jogador){
-//        
-//    }
+    public int alterar (Jogador jogador){
+        PreparedStatement stmt = null;
+        try{
+            try{
+                con.setAutoCommit(false);
+                String sql = "UPDATE jogador SET nome = ?, overall = ? WHERE id = ?";
+                stmt = con.prepareStatement(sql);
+                stmt.setString(1, jogador.getNome());
+                stmt.setInt(2, jogador.getOverall());
+                stmt.setInt(3, jogador.getCod());
+                con.commit();
+                return - 1;
+            } catch (SQLException e){
+                try{
+                    con.rollback();
+                    return e.getErrorCode();
+                } catch (SQLException ex){
+                    return ex.getErrorCode();
+                }
+            }
+        } finally {
+            try{
+                stmt.close();
+                con.setAutoCommit(true);
+                con.close();
+            } catch(SQLException e){
+                e.getErrorCode();
+            }
+        }
+    }
     
     public int excluir (int codJogador){
         PreparedStatement stmt = null;
