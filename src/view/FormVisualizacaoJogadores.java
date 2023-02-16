@@ -4,17 +4,34 @@
  */
 package view;
 
+import view.tableModel.JogadorTableModel;
+
 /**
  *
  * @author gabif
  */
 public class FormVisualizacaoJogadores extends javax.swing.JDialog {
 
+    //TableModel da Tabela de Jogador que será utilizada
+    private JogadorTableModel jogadorModel;
+    
+    //Método para atualizar a tabela a cada vez    
+     public void atualizaTabela(){
+         if(jTFFiltro.getText() == null){
+             jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorLista());
+         } else {
+             jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorListaNome(jTFFiltro.getText()));
+         }
+         
+         jTable1.setModel(jogadorModel);
+    }
+    
     /**
      * Creates new form FormVisualizacaoJogadores
      */
     public FormVisualizacaoJogadores() {
         initComponents();
+        atualizaTabela();
     }
 
     /**
@@ -37,13 +54,10 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Overall", "Jogador", "Gols", "Assistências"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -108,25 +122,29 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jBVoltarActionPerformed
 
-     public void atualizaTabela(){
-        /*if(jCBFiltro.getSelectedIndex()==0){
-            marcaModel = new MarcaTableModel(BikeShopcliente.ccont.marcaLista());
-        }else if(){
-            
-        }*/
-        //jTMarcas.setModel(marcaModel);
-    }
+    
      
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         // TODO add your handling code here:
+        
+        //Criando o formulário de cadastro passando null como parâmetro
+        //O formulário de cadastro recebe uma Raça como parâmetro, quando for para editar 
+        // um registro. Neste caso, estamos adicionando um novo registro.
         FormCadastroEManutencao form = new FormCadastroEManutencao(null);
+        
+        // abrindo formulario modal (Só é possível quando o formulário for do tipo JDialog
         form.setModal(true);
+        
+        // Como foi setado para o formulário ser MODAL. Aqui o sistema ficará travado
         form.setVisible(true);
+        
+        // Quando o usuário fechar o cadastro de Marcas deve-se novamente atualizar a tabela
         atualizaTabela();
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jTFFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFFiltroActionPerformed
         // TODO add your handling code here:
+        atualizaTabela();
     }//GEN-LAST:event_jTFFiltroActionPerformed
 
     /**

@@ -98,7 +98,7 @@ public class ConexaoController {
         }
     }
     
-    public ArrayList<Jogador> JogadorLista(){
+    public ArrayList<Jogador> jogadorLista(){
         String msg;
         try{
             out.writeObject("JogadorLista");
@@ -107,6 +107,20 @@ public class ConexaoController {
                     (Usuario) in.readObject();
             return (ArrayList<Jogador>)in.readObject();
         } catch (Exception e){
+            return null;
+        }
+    }
+    
+    public ArrayList<Jogador> jogadorListaNome(String nome){
+        String msg;
+        try{
+            out.writeObject("JogadorListaNome");
+            msg = (String) in.readObject(); //lendo o ok
+            out.writeObject(nome); //escrevendo o filtro
+            ArrayList<Jogador> listaJogador = (ArrayList<Jogador>) in.readObject();
+            return listaJogador;
+        } catch (Exception e){
+            e.printStackTrace();
             return null;
         }
     }
