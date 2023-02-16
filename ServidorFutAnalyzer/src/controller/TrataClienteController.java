@@ -56,8 +56,9 @@ public class TrataClienteController extends Thread{
                     Usuario user = (Usuario) in.readObject();
                     
                     UsuarioDao dao = new UsuarioDao();
-                   dao.usuarioInserir(user);
+                    dao.usuarioInserir(user);
                    out.writeObject("ok");
+                   
                 } else if(comando.equalsIgnoreCase("JogadorInserir")){
                     out.writeObject("ok");
                     Jogador jogador = (Jogador) in.readObject();

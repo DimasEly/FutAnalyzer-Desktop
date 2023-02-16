@@ -17,10 +17,14 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
     
     //Método para atualizar a tabela a cada vez    
      public void atualizaTabela(){
-         if(jTFFiltro.getText() == null){
+         if(FutAnalyzer.ccont.jogadorLista() != null){
+             if(jTFFiltro.getText().isEmpty()){
              jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorLista());
          } else {
              jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorListaNome(jTFFiltro.getText()));
+         }
+         }else{
+             System.out.println("lista passando nula"); //teste
          }
          
          jTable1.setModel(jogadorModel);
@@ -31,7 +35,7 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
      */
     public FormVisualizacaoJogadores() {
         initComponents();
-        atualizaTabela();
+        //atualizaTabela();
     }
 
     /**
