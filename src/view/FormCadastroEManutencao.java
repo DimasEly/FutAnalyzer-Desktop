@@ -143,7 +143,7 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                     Jogador jogador = new Jogador(nomeJogador, over, 0, FutAnalyzer.ccont.getUsuarioLogado().getCod());
                    
                     //chamando o servidor para executar a função de inserir novo jogador
-                    String msg = FutAnalyzer.ccont.inserirJogador(jogador);
+                    String msg;
                     System.out.println("idUsuario:" + jogador.getIdUsuario());
                     
                     if (codigo == -1){
