@@ -24,15 +24,18 @@ public class JogadorDao {
         con = Conector.getConnection();
     }
     
-    public ArrayList<Jogador> getLista(){
-    Statement stmt = null;
+    public ArrayList<Jogador> getLista(Usuario user){
+    PreparedStatement stmt = null;
     ArrayList<Jogador> listaJogadores = new ArrayList<Jogador>();
     try{
-        stmt = con.createStatement();
-        ResultSet res = stmt.executeQuery("select * from jogador");
-        
+        String sql = "select * from jogador where Usuario_id = ?";
+        stmt= con.prepareStatement(sql);
+        stmt.setInt(1, user.getCod());
+        stmt.execute();
+        ResultSet res = stmt.executeQuery();
+
         while (res.next()){
-            Jogador jogador = new Jogador(res.getString("nome"), res.getInt("overall"), res.getInt("gol"), res.getInt("Usuario_id"));
+            Jogador jogador = new Jogador(res.getInt("id"), res.getString("nome"), res.getInt("overall"), res.getInt("gols"), res.getInt("Usuario_id"));
             listaJogadores.add(jogador);
         }
         res.close();
@@ -82,6 +85,40 @@ public class JogadorDao {
             }
         }
        
+    }
+    
+//    public int alterar (Jogador jogador){
+//        
+//    }
+    
+    public int excluir (int codJogador){
+        PreparedStatement stmt = null;
+        try{
+            try{
+                con.setAutoCommit(false);
+                String sql = "delete from jogador where id = ?";
+                stmt = con.prepareStatement(sql);
+                stmt.setInt(1, codJogador);
+                stmt.execute();
+                con.commit();
+                return -1;
+            } catch (SQLException e){
+                try{
+                    con.rollback();
+                    return e.getErrorCode();
+                } catch (SQLException ex){
+                    return ex.getErrorCode();
+                }
+            }
+        } finally {
+            try{
+                stmt.close();
+                con.setAutoCommit(true);
+                con.close();
+            } catch (SQLException e){
+                return e.getErrorCode();
+            }
+        }
     }
     
 }
