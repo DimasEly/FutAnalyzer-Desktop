@@ -10,8 +10,10 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import model.JogadorDao;
+import model.JogoDao;
 import model.UsuarioDao;
 import modelDominio.Jogador;
+import modelDominio.Jogo;
 import modelDominio.Usuario;
 /**
  *
@@ -85,6 +87,11 @@ public class TrataClienteController extends Thread{
                             JogadorDao jogdao = new JogadorDao();
                             ArrayList<Jogador> listajogadores = jogdao.getLista(user);
                             out.writeObject(listajogadores);
+                } else if(comando.equalsIgnoreCase("JogoLista")){    
+                            Usuario user = (Usuario) in.readObject();
+                            JogoDao jogoDao = new JogoDao();
+                            ArrayList<Jogo> listaJogos = jogoDao.getListaJogo(user);
+                            out.writeObject(listaJogos);
                 } else {
                     // Comando inválido e não reconhecido!
                     // Cliente pediu um comando que o servidor não conhece.
