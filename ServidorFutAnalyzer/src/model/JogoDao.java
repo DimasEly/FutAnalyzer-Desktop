@@ -50,4 +50,69 @@ public class JogoDao {
         return null;
         }
     }
+    
+    public int inserir (Jogo jogo){
+        PreparedStatement stmt = null;
+        
+        try{
+            try{
+                con.setAutoCommit(false);
+                String sql = "insert into Jogo (placarMeu, placarAdv, usuario_id) values (?, ?, ?)";
+                stmt = con.prepareStatement(sql);
+                stmt.setInt(1, jogo.getMeuPlacar());
+                stmt.setInt(2, jogo.getAdvPlacar());
+                stmt.setInt(3, jogo.getIdUsuario());
+                stmt.execute();
+                con.commit();
+                return -1;
+            } catch (SQLException e){
+                try{
+                    con.rollback();
+                    e.printStackTrace();
+                    return e.getErrorCode();
+                } catch (SQLException ex){
+                    ex.printStackTrace();
+                    return ex.getErrorCode();
+                }
+            }
+        } finally {
+            try{
+                stmt.close();
+                con.setAutoCommit(true);
+                con.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+                return e.getErrorCode();
+            }
+        }
+    }
+    public int excluir (int codJogo){
+        PreparedStatement stmt = null;
+        try{
+            try{
+                con.setAutoCommit(false);
+                String sql = "delete from jogo where id = ?";
+                stmt = con.prepareStatement(sql);
+                stmt.setInt(1, codJogo);
+                stmt.execute();
+                con.commit();
+                return -1;
+            } catch(SQLException e){
+                try{
+                    con.rollback();
+                    return e.getErrorCode();
+                } catch(SQLException ex){
+                    return ex.getErrorCode();
+                }
+            }
+        } finally{
+            try{
+                stmt.close();
+                con.setAutoCommit(true);
+                con.close();
+            } catch (SQLException e){
+                return e.getErrorCode();
+            }
+        }
+    }
 }

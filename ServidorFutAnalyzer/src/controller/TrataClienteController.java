@@ -92,6 +92,20 @@ public class TrataClienteController extends Thread{
                             JogoDao jogoDao = new JogoDao();
                             ArrayList<Jogo> listaJogos = jogoDao.getListaJogo(user);
                             out.writeObject(listaJogos);
+                } else if(comando.equalsIgnoreCase("JogoInserir")){
+                    out.writeObject("ok");
+                    Jogo jogo = (Jogo) in.readObject();
+                    
+                    JogoDao jogodao = new JogoDao();
+                    jogodao.inserir(jogo);
+                    out.writeObject("ok");
+                } else if(comando.equalsIgnoreCase("JogoExcluir")){
+                    out.writeObject("ok");
+                    int codJogo = (int) in.readObject();
+                    
+                    JogoDao jogodao = new JogoDao();
+                    jogodao.excluir(codJogo);
+                    out.writeObject("ok");
                 } else {
                     // Comando inválido e não reconhecido!
                     // Cliente pediu um comando que o servidor não conhece.
