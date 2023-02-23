@@ -51,6 +51,84 @@ public class JogoDao {
         }
     }
     
+    public ArrayList<Jogo> getListaVitorias(Usuario user){
+        PreparedStatement stmt = null;
+        ArrayList<Jogo> listaVitorias = new ArrayList<Jogo>();
+            try{
+               String sql = "SELECT * FROM jogo WHERE placarMeu > PlacarAdv AND usuario_id = ?";
+               stmt = con.prepareStatement(sql);
+               stmt.setInt(1, user.getCod());
+               stmt.execute();
+               ResultSet res = stmt.executeQuery();
+               
+               while (res.next()){
+                Jogo jogo = new Jogo (res.getInt("id"), res.getInt("placarMeu")
+                        ,res.getInt("placarAdv"), res.getInt("usuario_id"));
+                listaVitorias.add(jogo);
+            }
+            res.close();
+            stmt.close();
+            con.close();
+            return listaVitorias;
+            
+        } catch (SQLException e){
+            System.out.println(e.getErrorCode() + "-" + e.getMessage());
+        return null;
+        }
+    }
+    
+        public ArrayList<Jogo> getListaEmpates(Usuario user){
+        PreparedStatement stmt = null;
+        ArrayList<Jogo> listaEmpates = new ArrayList<Jogo>();
+            try{
+               String sql = "SELECT * FROM jogo WHERE placarMeu = PlacarAdv AND usuario_id = ?";
+               stmt = con.prepareStatement(sql);
+               stmt.setInt(1, user.getCod());
+               stmt.execute();
+               ResultSet res = stmt.executeQuery();
+               
+               while (res.next()){
+                Jogo jogo = new Jogo (res.getInt("id"), res.getInt("placarMeu")
+                        ,res.getInt("placarAdv"), res.getInt("usuario_id"));
+                listaEmpates.add(jogo);
+            }
+            res.close();
+            stmt.close();
+            con.close();
+            return listaEmpates;
+            
+        } catch (SQLException e){
+            System.out.println(e.getErrorCode() + "-" + e.getMessage());
+        return null;
+        }
+    }
+        
+                public ArrayList<Jogo> getListaDerrotas(Usuario user){
+        PreparedStatement stmt = null;
+        ArrayList<Jogo> listaDerrotas = new ArrayList<Jogo>();
+            try{
+               String sql = "SELECT * FROM jogo WHERE placarMeu < PlacarAdv AND usuario_id = ?";
+               stmt = con.prepareStatement(sql);
+               stmt.setInt(1, user.getCod());
+               stmt.execute();
+               ResultSet res = stmt.executeQuery();
+               
+               while (res.next()){
+                Jogo jogo = new Jogo (res.getInt("id"), res.getInt("placarMeu")
+                        ,res.getInt("placarAdv"), res.getInt("usuario_id"));
+                listaDerrotas.add(jogo);
+            }
+            res.close();
+            stmt.close();
+            con.close();
+            return listaDerrotas;
+            
+        } catch (SQLException e){
+            System.out.println(e.getErrorCode() + "-" + e.getMessage());
+        return null;
+        }
+    }
+    
     public int inserir (Jogo jogo){
         PreparedStatement stmt = null;
         
