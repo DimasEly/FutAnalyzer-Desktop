@@ -77,6 +77,28 @@ public class JogoDao {
         }
     }
     
+    public int getGolsFeitos(Usuario user){
+        PreparedStatement stmt = null;
+        int golsFeitos = 0;
+        try{
+            String sql = "SELECT SUM(placarMeu) FROM jogo WHERE usuario_id = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, user.getCod());
+            stmt.execute();
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+                golsFeitos = res.getInt(1);
+            }
+            res.close();
+            stmt.close();
+            con.close();
+            return golsFeitos;
+        } catch (SQLException e){
+             System.out.println(e.getErrorCode() + "-" + e.getMessage());
+             return 0;
+        }
+    }
+    
         public ArrayList<Jogo> getListaEmpates(Usuario user){
         PreparedStatement stmt = null;
         ArrayList<Jogo> listaEmpates = new ArrayList<Jogo>();

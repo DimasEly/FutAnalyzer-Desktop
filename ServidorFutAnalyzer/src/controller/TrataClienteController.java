@@ -103,6 +103,9 @@ public class TrataClienteController extends Thread{
                             JogoDao jogoDao3 = new JogoDao();
                             ArrayList<Jogo> listaJogosDerrotas = jogoDao3.getListaDerrotas(user);
                             out.writeObject(listaJogosDerrotas); 
+                            JogoDao jogoDao4 = new JogoDao();
+                            int golsFeitos = jogoDao4.getGolsFeitos(user);
+                            out.writeObject(golsFeitos);
                 }                
                 else if(comando.equalsIgnoreCase("JogoListaVitorias")){    
                             Usuario user = (Usuario) in.readObject();
