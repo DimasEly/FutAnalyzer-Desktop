@@ -106,6 +106,9 @@ public class TrataClienteController extends Thread{
                             JogoDao jogoDao4 = new JogoDao();
                             int golsFeitos = jogoDao4.getGolsFeitos(user);
                             out.writeObject(golsFeitos);
+                            JogoDao jogoDao5 = new JogoDao();
+                            int golsSofridos = jogoDao5.getGolsSofridos(user);
+                            out.writeObject(golsSofridos);
                 }                
                 else if(comando.equalsIgnoreCase("JogoListaVitorias")){    
                             Usuario user = (Usuario) in.readObject();
@@ -120,6 +123,16 @@ public class TrataClienteController extends Thread{
                     JogoDao jogodao = new JogoDao();
                     jogodao.inserir(jogo);
                     out.writeObject("ok");
+                    
+                    } else if(comando.equalsIgnoreCase("JogoAlterar")){
+                    out.writeObject("ok");
+                    Jogo jogo = (Jogo) in.readObject();
+                    System.out.println(jogo);
+                    
+                    JogoDao jogodao = new JogoDao();
+                    jogodao.alterar(jogo);
+                    out.writeObject("ok");
+                    
                 } else if(comando.equalsIgnoreCase("JogoExcluir")){
                     out.writeObject("ok");
                     int codJogo = (int) in.readObject();
