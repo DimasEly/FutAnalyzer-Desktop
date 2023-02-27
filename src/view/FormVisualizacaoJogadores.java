@@ -4,6 +4,7 @@
  */
 package view;
 
+import modelDominio.Jogador;
 import view.tableModel.JogadorTableModel;
 
 /**
@@ -64,6 +65,11 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
 
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jBCadastrar.setText("Cadastrar");
@@ -166,6 +172,18 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
         // TODO add your handling code here:
         atualizaTabela();
     }//GEN-LAST:event_jTFFiltroKeyReleased
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        Jogador jogador = jogadorModel.getJogador(jTable1.getSelectedRow());
+        FormCadastroEManutencao formcad = new FormCadastroEManutencao(jogador);
+        // abrindo formulario modal (Só é possível quando o formulário for do tipo JDialog
+        formcad.setModal(true);
+         // Como foi setado para o formulário ser MODAL. Aqui o sistema ficará travado
+        formcad.setVisible(true);
+        // Quando o usuário fechar o cadastro de Marcas deve-se novamente atualizar a tabela
+        atualizaTabela();
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

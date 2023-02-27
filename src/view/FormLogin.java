@@ -22,7 +22,7 @@ public class FormLogin extends javax.swing.JFrame {
      */
     public FormLogin() {
         initComponents();
-        jLErro.setVisible(false);
+        jLErro.setVisible(false);;
     }
 
     /**
@@ -42,7 +42,7 @@ public class FormLogin extends javax.swing.JFrame {
         jBSair = new javax.swing.JButton();
         jTFLogin = new javax.swing.JTextField();
         jLErro = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,7 +89,7 @@ public class FormLogin extends javax.swing.JFrame {
         jLErro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLErro.setText("Usuário ou senha inválida!");
 
-        jLabel2.setText("jLabel2");
+        jLIcon.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,10 +112,9 @@ public class FormLogin extends javax.swing.JFrame {
                             .addComponent(jBEsqueceuSenha)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLIcon)))
                 .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLErro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(56, 56, 56))
         );
@@ -123,7 +122,7 @@ public class FormLogin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(83, 83, 83)
-                .addComponent(jLabel2)
+                .addComponent(jLIcon)
                 .addGap(78, 78, 78)
                 .addComponent(Login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -249,7 +248,7 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jBEsqueceuSenha;
     private javax.swing.JButton jBSair;
     private javax.swing.JLabel jLErro;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLIcon;
     private javax.swing.JTextField jTFLogin;
     private javax.swing.JPasswordField jTFSenha;
     // End of variables declaration//GEN-END:variables

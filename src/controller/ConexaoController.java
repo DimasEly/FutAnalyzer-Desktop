@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import modelDominio.Jogador;
+import modelDominio.Jogo;
 import modelDominio.Usuario;
 import view.FutAnalyzer;
 
@@ -67,17 +68,48 @@ public class ConexaoController {
         }
     }
     
+    public String inserirJogo(Jogo jogo){
+        String msg;
+        try{
+            out.writeObject("JogoInserir");
+            msg = (String) in.readObject();
+            if(msg.equals("ok")){
+                out.writeObject(jogo);
+                return (String) in.readObject();
+            } else {
+                return "nok";
+            }
+        } catch (Exception e){
+            return null;
+        }
+    }
+    
     public String jogadorExcluir (Jogador jogador){
         String msg = "";
         
         try{
             out.writeObject("JogadorExcluir");
             msg = (String) in.readObject();  //lendo o ok
-            out.writeObject(jogador);        //escrevendo a Marca
+            out.writeObject(jogador.getCod());        //escrevendo a Marca
             msg = (String) in.readObject();  //lendo o ok
             
             return msg;
         }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    public String jogoExcluir (Jogo jogo){
+        String msg = "";
+        try{
+            out.writeObject("JogoExcluir");
+            msg = (String) in.readObject();
+            out.writeObject(jogo.getId());
+            msg = (String) in.readObject();
+            
+            return msg;
+        }catch (Exception ex){
             ex.printStackTrace();
             return null;
         }
@@ -94,6 +126,22 @@ public class ConexaoController {
             
             return msg;
         } catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    public String jogoAlterar (Jogo jogo){
+        String msg = "";
+        
+        try{
+            out.writeObject("JogoAlterar");
+            msg = (String) in.readObject();
+            out.writeObject(jogo);
+            msg = (String) in.readObject();
+            
+            return msg;
+        } catch (Exception ex){
             ex.printStackTrace();
             return null;
         }
@@ -134,6 +182,20 @@ public class ConexaoController {
             out.writeObject("JogadorListaNome");
             msg = (String) in.readObject(); //lendo o ok
             out.writeObject(nome); //escrevendo o filtro
+            ArrayList<Jogador> listaJogador = (ArrayList<Jogador>) in.readObject();
+            return listaJogador;
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ArrayList<Jogador> jogadorListaOver(String overall){
+        String msg;
+        try{
+            out.writeObject("JogadorListaOver");
+            msg = (String) in.readObject();
+            out.writeObject(overall);
             ArrayList<Jogador> listaJogador = (ArrayList<Jogador>) in.readObject();
             return listaJogador;
         } catch (Exception e){

@@ -27,6 +27,7 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         } else {  // alteração no registro
             codigo = jogador.getCod();
             jTFNome.setText(jogador.getNome());
+            jTFOverall.setText("" + jogador.getOverall());
         }
     }
 
@@ -92,9 +93,9 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTFNome, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                     .addComponent(jTFOverall))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(130, Short.MAX_VALUE)
                 .addComponent(jBExcluir)
                 .addGap(64, 64, 64)
                 .addComponent(jBSalvar)
@@ -105,7 +106,7 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jBVoltar)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLNome)
                     .addComponent(jTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -113,7 +114,7 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLOverall)
                     .addComponent(jTFOverall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBExcluir)
                     .addComponent(jBSalvar))
@@ -148,8 +149,10 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                     
                     if (codigo == -1){
                         msg = FutAnalyzer.ccont.inserirJogador(jogador);
+                        dispose();
                     } else {
                         jogador.setCod(codigo);
+                        dispose();
                         msg = FutAnalyzer.ccont.jogadorAlterar(jogador);
                         if (msg.equals("ok")){
                             dispose(); //Se deu certo a alteração, pode fechar a janela
