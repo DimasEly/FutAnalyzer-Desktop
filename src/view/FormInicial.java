@@ -31,8 +31,9 @@ public class FormInicial extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jBJogadores = new javax.swing.JButton();
-        jBArtilheirosAssistentes = new javax.swing.JButton();
+        jBVisualizaJogo = new javax.swing.JButton();
         jLNomeUsuario = new javax.swing.JLabel();
+        jBEstatistica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -45,33 +46,41 @@ public class FormInicial extends javax.swing.JDialog {
             }
         });
 
-        jBArtilheirosAssistentes.setText("Artilheiros e Assistentes");
-        jBArtilheirosAssistentes.addActionListener(new java.awt.event.ActionListener() {
+        jBVisualizaJogo.setText("Visualizar jogos");
+        jBVisualizaJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBArtilheirosAssistentesActionPerformed(evt);
+                jBVisualizaJogoActionPerformed(evt);
             }
         });
 
         jLNomeUsuario.setText("Seja Bem Vindo(a):");
+
+        jBEstatistica.setText("Estatísticas");
+        jBEstatistica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEstatisticaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBArtilheirosAssistentes, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLNomeUsuario)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jBVisualizaJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBEstatistica, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(146, 146, 146)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(jLNomeUsuario))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(89, 89, 89)
+                            .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,11 +89,13 @@ public class FormInicial extends javax.swing.JDialog {
                 .addComponent(jLNomeUsuario)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBArtilheirosAssistentes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBVisualizaJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBEstatistica, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,12 +108,20 @@ public class FormInicial extends javax.swing.JDialog {
         form.setVisible(true);
     }//GEN-LAST:event_jBJogadoresActionPerformed
 
-    private void jBArtilheirosAssistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBArtilheirosAssistentesActionPerformed
+    private void jBVisualizaJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVisualizaJogoActionPerformed
         // TODO add your handling code here:
-        FormArtilheirosEAssistentes form = new FormArtilheirosEAssistentes();
+        FormVisualizacaoJogos form = new FormVisualizacaoJogos();
         form.setModal(true);
         form.setVisible(true);
-    }//GEN-LAST:event_jBArtilheirosAssistentesActionPerformed
+    }//GEN-LAST:event_jBVisualizaJogoActionPerformed
+
+    private void jBEstatisticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEstatisticaActionPerformed
+        // TODO add your handling code here:
+        FormEstatisticas form = new FormEstatisticas();
+        form.setModal(true);
+        form.setVisible(true);
+        //investigar erro
+    }//GEN-LAST:event_jBEstatisticaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,8 +159,9 @@ public class FormInicial extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBArtilheirosAssistentes;
+    private javax.swing.JButton jBEstatistica;
     private javax.swing.JButton jBJogadores;
+    private javax.swing.JButton jBVisualizaJogo;
     private javax.swing.JLabel jLNomeUsuario;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

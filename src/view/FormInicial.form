@@ -23,24 +23,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jBJogadores" min="-2" pref="166" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jBArtilheirosAssistentes" min="-2" pref="166" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLNomeUsuario" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jBVisualizaJogo" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
+                  <Component id="jBEstatistica" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jLNomeUsuario" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                          <Component id="jBJogadores" min="-2" pref="180" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace pref="106" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -51,12 +53,13 @@
               <Component id="jLNomeUsuario" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBJogadores" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="jBArtilheirosAssistentes" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jBJogadores" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jBVisualizaJogo" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jBEstatistica" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,18 +78,26 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBJogadoresActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jBArtilheirosAssistentes">
+    <Component class="javax.swing.JButton" name="jBVisualizaJogo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Artilheiros e Assistentes"/>
+        <Property name="text" type="java.lang.String" value="Visualizar jogos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBArtilheirosAssistentesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBVisualizaJogoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLNomeUsuario">
       <Properties>
         <Property name="text" type="java.lang.String" value="Seja Bem Vindo(a):"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBEstatistica">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Estat&#xed;sticas"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEstatisticaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

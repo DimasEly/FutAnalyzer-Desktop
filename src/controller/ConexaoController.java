@@ -176,6 +176,51 @@ public class ConexaoController {
         }
     }
     
+    public ArrayList<Jogo> jogoLista(){
+        String msg;
+        try{
+            out.writeObject("JogoLista");
+            out.writeObject(FutAnalyzer.ccont.usuarioLogado);
+            return (ArrayList<Jogo>) in.readObject();
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
+        public ArrayList<Jogo> jogoListaVitorias(){
+        String msg;
+        try{
+            out.writeObject("JogoListaVitorias");
+            out.writeObject(FutAnalyzer.ccont.usuarioLogado);
+            return (ArrayList<Jogo>) in.readObject();
+        } catch(Exception e){
+            return null;
+        }
+    }
+        
+        public ArrayList<Jogo> jogoListaEmpates(){
+        String msg;
+        try{
+            out.writeObject("JogoListaEmpates");
+            out.writeObject(FutAnalyzer.ccont.usuarioLogado);
+            return (ArrayList<Jogo>) in.readObject();
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
+                public ArrayList<Jogo> jogoListaDerrotas(){
+        String msg;
+        try{
+            out.writeObject("JogoListaDerrotas");
+            out.writeObject(FutAnalyzer.ccont.usuarioLogado);
+            return (ArrayList<Jogo>) in.readObject();
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
+    
     public ArrayList<Jogador> jogadorListaNome(String nome){
         String msg;
         try{

@@ -6,57 +6,57 @@ package view.tableModel;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import modelDominio.Jogador;
+import modelDominio.Jogo;
+
 /**
  *
- * @author gabif
+ * @author magal
  */
-public class JogadorTableModel extends AbstractTableModel{
-
-    private ArrayList<Jogador> listaJogador;
+public class JogoTableModel extends AbstractTableModel{
+    private ArrayList<Jogo> listaJogo;
     
     // método construtor que recebe como parâmetro a lista de jogadores
-    public JogadorTableModel(ArrayList<Jogador> listaJogador) {
-        this.listaJogador = listaJogador;
+    public JogoTableModel(ArrayList<Jogo> listaJogo){
+        this.listaJogo = listaJogo;
     }
-    
+
     // sobrescrita do método que diz quantas LINHAS a tabela tem
     @Override
     public int getRowCount() {
-        return listaJogador.size();
+        return listaJogo.size();
     }
-    
+
     // sobrescrita do método que diz quantas COLUNAS a tabela tem
     @Override
     public int getColumnCount() {
         return 2;
     }
-    
+
     // sobrescrita do método que retorna o valor de cada coluna
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Jogador jogador = listaJogador.get(rowIndex);
-
-        switch (columnIndex) {
-            case 0: return jogador.getOverall();
-            case 1: return jogador.getNome();
+        Jogo jogo = listaJogo.get(rowIndex);
+        
+        switch (columnIndex){
+            case 0: return jogo.getMeuPlacar();
+            case 1: return jogo.getAdvPlacar();
             default: return "";
         }
     }
-    
-    // sobrescrita do método que retorna o nome de cada coluna
+
     @Override
     public String getColumnName(int column) {
-        switch (column) {
-            case 0: return "Overall";
-            case 1: return "Nome";
-            default: return "NoName";
-        }
+       switch (column){
+           case 0: return "Meu placar";
+           case 1: return "Placar oponente";
+           default: return "noPlacar";
+       }
     }
     
-    // método que retorna um objeto de Jogador
+    // método que retorna um objeto de Jogo
     // a partir da linha que o usuário selecionou.
-    public Jogador getJogador(int row) {
-        return listaJogador.get(row);
+    public Jogo getJogo(int row){
+        return listaJogo.get(row);
     }
+    
 }

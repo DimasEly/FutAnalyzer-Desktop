@@ -44,7 +44,7 @@ public class FormCadastrodePartidas extends javax.swing.JDialog {
         jBSalvar = new javax.swing.JButton();
         jBVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLNome.setText("Meu Time");
 
@@ -150,7 +150,7 @@ public class FormCadastrodePartidas extends javax.swing.JDialog {
                 int meusGols = Integer.parseInt(jTFGolsMeuTime.getText());
                 int golsAdv = Integer.parseInt(jTFGolsOponente.getText());
                 
-                Jogo jogo = new Jogo(meusGols, golsAdv, 0, FutAnalyzer.ccont.getUsuarioLogado().getCod());
+                Jogo jogo = new Jogo(0, meusGols, golsAdv, FutAnalyzer.ccont.getUsuarioLogado().getCod());
                 
                 String msg;
                 

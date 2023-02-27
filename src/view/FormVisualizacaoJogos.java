@@ -6,15 +6,16 @@ package view;
 
 import modelDominio.Jogador;
 import view.tableModel.JogadorTableModel;
+import view.tableModel.JogoTableModel;
 
 /**
  *
  * @author gabif
  */
-public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
+public class FormVisualizacaoJogos extends javax.swing.JDialog {
 
      //TableModel da Tabela de Jogador que será utilizada
-    private JogadorTableModel jogadorModel;
+    private JogoTableModel jogoModel;
     
     //Método para atualizar a tabela a cada vez    
      public void atualizaTabela(){
@@ -24,7 +25,7 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
     /**
      * Creates new form FormArtilheirosEAssistentes
      */
-    public FormArtilheirosEAssistentes() {
+    public FormVisualizacaoJogos() {
         initComponents();
     }
 
@@ -40,6 +41,8 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
         jBVoltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTJogadores = new javax.swing.JTable();
+        jBCadastrar = new javax.swing.JButton();
+        jCBResultado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,27 +63,44 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTJogadores);
 
+        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
+
+        jCBResultado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Vitórias", "Empates", "Derrotas" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jBVoltar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(49, 49, 49)
+                .addComponent(jBVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCBResultado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jBVoltar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCBResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBVoltar)
+                    .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -91,15 +111,36 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jBVoltarActionPerformed
 
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        // TODO add your handling code here:
+
+        //Criando o formulário de cadastro passando null como parâmetro
+        //O formulário de cadastro recebe uma Raça como parâmetro, quando for para editar
+        // um registro. Neste caso, estamos adicionando um novo registro.
+        FormCadastrodePartidas form = new FormCadastrodePartidas(null);
+
+        // abrindo formulario modal (Só é possível quando o formulário for do tipo JDialog
+            form.setModal(true);
+
+            // Como foi setado para o formulário ser MODAL. Aqui o sistema ficará travado
+            form.setVisible(true);
+
+            // Quando o usuário fechar o cadastro de Marcas deve-se novamente atualizar a tabela
+            atualizaTabela();
+    }//GEN-LAST:event_jBCadastrarActionPerformed
+
     private void jtJogadoresMouseClicked(java.awt.event.MouseEvent evt) {                                      
         atualizarTabela();
     }
     
     public void atualizarTabela() {
+        if(FutAnalyzer.ccont.){
+            
+        }
         // carregando a tabela com os joadores
        // jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.JogadorLista());
         
-        jTJogadores.setModel(jogadorModel);
+//        jTJogadores.setModel(jogadorModel);
     }
     
     /**
@@ -119,26 +160,29 @@ public class FormArtilheirosEAssistentes extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormArtilheirosEAssistentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormVisualizacaoJogos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormArtilheirosEAssistentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormVisualizacaoJogos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormArtilheirosEAssistentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormVisualizacaoJogos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormArtilheirosEAssistentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormVisualizacaoJogos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormArtilheirosEAssistentes().setVisible(true);
+                new FormVisualizacaoJogos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBVoltar;
+    private javax.swing.JComboBox<String> jCBResultado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTJogadores;
     // End of variables declaration//GEN-END:variables
