@@ -38,7 +38,7 @@ public class JogadorTableModel extends AbstractTableModel{
         Jogador jogador = listaJogador.get(rowIndex);
 
         switch (columnIndex) {
-            case 0: return jogador.getCod();
+            case 0: return jogador.getOverall();
             case 1: return jogador.getNome();
             default: return "";
         }
@@ -48,7 +48,7 @@ public class JogadorTableModel extends AbstractTableModel{
     @Override
     public String getColumnName(int column) {
         switch (column) {
-            case 0: return "Código";
+            case 0: return "Overall";
             case 1: return "Nome";
             default: return "NoName";
         }

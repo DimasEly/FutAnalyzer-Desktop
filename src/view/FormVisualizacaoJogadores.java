@@ -17,17 +17,17 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
     
     //Método para atualizar a tabela a cada vez    
      public void atualizaTabela(){
-         if(FutAnalyzer.ccont.jogadorLista() != null){
+        if(FutAnalyzer.ccont.jogadorLista() != null){
              if(jTFFiltro.getText().isEmpty()){
-             jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorLista());
-         } else {
-             jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorListaNome(jTFFiltro.getText()));
-         }
-         }else{
+                jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorLista());
+            } else {
+                jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.jogadorListaNome(jTFFiltro.getText()));
+             }
+        }else{
              System.out.println("lista passando nula"); //teste
-         }
+        }
          
-         jTable1.setModel(jogadorModel);
+        jTable1.setModel(jogadorModel);
     }
     
     /**
@@ -81,6 +81,17 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
         });
 
         jLFiltro.setText("Filtro");
+
+        jTFFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFFiltroActionPerformed(evt);
+            }
+        });
+        jTFFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFFiltroKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,6 +161,11 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
         // TODO add your handling code here:
         atualizaTabela();
     }//GEN-LAST:event_jTFFiltroActionPerformed
+
+    private void jTFFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFFiltroKeyReleased
+        // TODO add your handling code here:
+        atualizaTabela();
+    }//GEN-LAST:event_jTFFiltroKeyReleased
 
     /**
      * @param args the command line arguments

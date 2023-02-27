@@ -99,6 +99,24 @@ public class ConexaoController {
         }
     }
     
+   /* public Boolean jogadorAlterar(Jogador jogador){
+        String msg = "";
+        try{
+            out.writeObject("JogadorExcluir");
+            msg = (String) in.readObject(); // lendo ok
+            out.writeObject(jogador); // escrevendo o jogador
+            msg = (String) in.readObject(); // lendo ok
+            if (msg.equals("ok")){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }*/
+    
     public ArrayList<Jogador> jogadorLista(){
         String msg;
         try{
