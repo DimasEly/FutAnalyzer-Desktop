@@ -139,9 +139,9 @@ public class FormVisualizacaoJogos extends javax.swing.JDialog {
     }
     
     public void atualizarTabela() {
-        if(FutAnalyzer.ccont.){
-            
-        }
+//        if(FutAnalyzer.ccont.){
+//            
+//        }
         // carregando a tabela com os joadores
        // jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.JogadorLista());
         
