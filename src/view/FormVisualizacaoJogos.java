@@ -158,19 +158,19 @@ public void atualizarTabela() {
             // então chama a lista que possui todos os jogos do Controller 
             // Esse método retorna todos os jogos
             case 1 :
-                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoLista());
-                break;
-
-            case 2: // case 2, a tabela mostrará somente as vitórias 
                 jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaVitorias());
                 break;
 
-            case 3: //case 3, a tabela mostrará somente os empates
+            case 2: // case 2, a tabela mostrará somente as vitórias 
                 jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaEmpates());
                 break;
 
-            default : //por fim, o default mostra as derrotas
+            case 3: //case 3, a tabela mostrará somente os empates
                 jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaDerrotas());
+                break;
+
+            default : //por fim, o default mostra as derrotas
+                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoLista());
         }
         jTJogadores.setModel(jogoModel); //setando o modelo correto para a tabela do formulário
     }
