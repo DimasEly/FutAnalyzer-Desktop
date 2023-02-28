@@ -5,6 +5,7 @@
 package view;
 
 import modelDominio.Jogador;
+import modelDominio.Jogo;
 import view.tableModel.JogadorTableModel;
 import view.tableModel.JogoTableModel;
 
@@ -130,6 +131,10 @@ public class FormVisualizacaoJogos extends javax.swing.JDialog {
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jtJogadoresMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        Jogo jogo = jogoModel.getJogo(jTJogadores.getSelectedRow());
+        FormCadastrodePartidas formcad = new FormCadastrodePartidas(jogo);
+        formcad.setModal(true);
+        formcad.setVisible(true);
         atualizarTabela();
     }
     
