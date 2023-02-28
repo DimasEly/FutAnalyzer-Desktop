@@ -87,6 +87,14 @@ public class TrataClienteController extends Thread{
                             JogadorDao jogdao = new JogadorDao();
                             ArrayList<Jogador> listajogadores = jogdao.getLista(user);
                             out.writeObject(listajogadores);
+                            
+                } else if (comando.equalsIgnoreCase("JogadorListaNome")){
+                            Usuario user = (Usuario) in.readObject();
+                            JogadorDao jogadorDao = new JogadorDao();
+                            String nome = (String) in.readObject();
+     
+                            ArrayList<Jogador> listaJogador = jogadorDao.getListaNome(user, nome);
+                            out.writeObject(listaJogador);
                 } else if(comando.equalsIgnoreCase("JogoLista")){    
                             Usuario user = (Usuario) in.readObject();
                             JogoDao jogoDao = new JogoDao();

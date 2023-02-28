@@ -207,7 +207,7 @@ public class ConexaoController {
         String msg;
         try{
             out.writeObject("JogadorListaNome");
-            msg = (String) in.readObject(); //lendo o ok
+            out.writeObject(FutAnalyzer.ccont.usuarioLogado);
             out.writeObject(nome); //escrevendo o filtro
             ArrayList<Jogador> listaJogador = (ArrayList<Jogador>) in.readObject();
             return listaJogador;

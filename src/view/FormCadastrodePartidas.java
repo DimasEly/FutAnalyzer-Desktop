@@ -124,9 +124,11 @@ public class FormCadastrodePartidas extends javax.swing.JDialog {
         // TODO add your handling code here:
         int certeza = JOptionPane.showConfirmDialog(this, "Tem certeza?", this.getTitle(), JOptionPane.YES_NO_OPTION);
 
+        System.out.println("f" + codigo);
         // CASO O USUÁRIO RESPONDA SIM PARA A EXCLUSÃO
         if(certeza == JOptionPane.YES_OPTION){
             Jogo jogo = new Jogo (codigo);
+            System.out.println("f" + codigo);
             
             String msg = FutAnalyzer.ccont.jogoExcluir(jogo);
             if(msg.equals("ok")){

@@ -18,6 +18,30 @@ public class FormVisualizacaoJogos extends javax.swing.JDialog {
      //TableModel da Tabela de Jogador que será utilizada
     private JogoTableModel jogoModel;
     
+    public void atualizarTabela() {
+        switch (jCBResultado.getSelectedIndex()){ // verificando o filtro selecionado
+
+            // se o usuário escolheu TODAS (case 1)
+            // então chama a lista que possui todos os jogos do Controller 
+            // Esse método retorna todos os jogos
+            case 1 :
+                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaVitorias());
+                break;
+
+            case 2: // case 2, a tabela mostrará somente as vitórias 
+                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaEmpates());
+                break;
+
+            case 3: //case 3, a tabela mostrará somente os empates
+                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaDerrotas());
+                break;
+
+            default : //por fim, o default mostra as derrotas
+                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoLista());
+        }
+        jTJogadores.setModel(jogoModel); //setando o modelo correto para a tabela do formulário
+    }
+    
     
     /**
      * Creates new form FormArtilheirosEAssistentes
@@ -79,6 +103,11 @@ public class FormVisualizacaoJogos extends javax.swing.JDialog {
         });
 
         jCBResultado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Vitórias", "Empates", "Derrotas" }));
+        jCBResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBResultadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,30 +179,12 @@ public class FormVisualizacaoJogos extends javax.swing.JDialog {
         atualizarTabela();
     }//GEN-LAST:event_jTJogadoresMouseClicked
 
-    
-public void atualizarTabela() {
-        switch (jCBResultado.getSelectedIndex()){ // verificando o filtro selecionado
+    private void jCBResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBResultadoActionPerformed
+        // TODO add your handling code here:
+        atualizarTabela();
+    }//GEN-LAST:event_jCBResultadoActionPerformed
 
-            // se o usuário escolheu TODAS (case 1)
-            // então chama a lista que possui todos os jogos do Controller 
-            // Esse método retorna todos os jogos
-            case 1 :
-                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaVitorias());
-                break;
-
-            case 2: // case 2, a tabela mostrará somente as vitórias 
-                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaEmpates());
-                break;
-
-            case 3: //case 3, a tabela mostrará somente os empates
-                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaDerrotas());
-                break;
-
-            default : //por fim, o default mostra as derrotas
-                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoLista());
-        }
-        jTJogadores.setModel(jogoModel); //setando o modelo correto para a tabela do formulário
-    }
+   
 
     
     /**

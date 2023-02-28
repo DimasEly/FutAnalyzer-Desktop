@@ -24,6 +24,9 @@ public class FormLogin extends javax.swing.JFrame {
     public FormLogin() {
         initComponents();
         jLErro.setVisible(false);
+        
+        ImageIcon imagem = new ImageIcon();
+        jLIcon.setIcon(imagem);
     }
 
     /**
@@ -39,7 +42,6 @@ public class FormLogin extends javax.swing.JFrame {
         Login = new javax.swing.JLabel();
         Senha = new javax.swing.JLabel();
         jTFSenha = new javax.swing.JPasswordField();
-        jBEsqueceuSenha = new javax.swing.JLabel();
         jBSair = new javax.swing.JButton();
         jTFLogin = new javax.swing.JTextField();
         jLErro = new javax.swing.JLabel();
@@ -62,14 +64,6 @@ public class FormLogin extends javax.swing.JFrame {
         Senha.setText("Senha");
 
         jTFSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        jBEsqueceuSenha.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        jBEsqueceuSenha.setText("Esqueceu Senha");
-        jBEsqueceuSenha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBEsqueceuSenhaMouseClicked(evt);
-            }
-        });
 
         jBSair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jBSair.setText("Sair");
@@ -109,12 +103,11 @@ public class FormLogin extends javax.swing.JFrame {
                                 .addComponent(Login)
                                 .addComponent(jTFLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Senha)
-                                .addComponent(jTFSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jBEsqueceuSenha)))
+                                .addComponent(jTFSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(jLIcon)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLErro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(56, 56, 56))
@@ -132,26 +125,17 @@ public class FormLogin extends javax.swing.JFrame {
                 .addComponent(Senha)
                 .addGap(4, 4, 4)
                 .addComponent(jTFSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBEsqueceuSenha)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBSair)
                     .addComponent(jBEntrar))
                 .addGap(18, 18, 18)
                 .addComponent(jLErro)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBEsqueceuSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEsqueceuSenhaMouseClicked
-        // TODO add your handling code here:
-        
-        //CHAMAR A TELA DE RECUPERAÇÃO DE SENHA
-        
-    }//GEN-LAST:event_jBEsqueceuSenhaMouseClicked
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
         // TODO add your handling code here:
@@ -246,7 +230,6 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JLabel Login;
     private javax.swing.JLabel Senha;
     private javax.swing.JButton jBEntrar;
-    private javax.swing.JLabel jBEsqueceuSenha;
     private javax.swing.JButton jBSair;
     private javax.swing.JLabel jLErro;
     private javax.swing.JLabel jLIcon;

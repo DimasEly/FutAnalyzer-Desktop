@@ -48,6 +48,31 @@ public class JogadorDao {
     }
 }
     
+    public ArrayList<Jogador> getListaNome (Usuario user, String nome){
+        PreparedStatement stmt = null;
+        ArrayList<Jogador> listaJogador = new ArrayList<Jogador>();
+        
+        try{
+            String sql = "select * from jogador where Usuario_id = ? and nome like '%" + nome + "%'";
+            stmt= con.prepareStatement(sql);
+            stmt.setInt(1, user.getCod());
+            stmt.execute();
+            ResultSet res = stmt.executeQuery();
+            
+            while(res.next()){
+                Jogador jogador = new Jogador(res.getInt("id"), res.getString("nome"), res.getInt("overall"), res.getInt("gols"), res.getInt("Usuario_id"));
+            listaJogador.add(jogador);
+            }
+            res.close();
+            stmt.close();
+            con.close();
+            return listaJogador;
+        } catch (SQLException e){
+            System.out.println(e.getErrorCode() + "-" + e.getMessage());
+            return null;
+        }
+    }
+    
     public int inserir (Jogador jogador){
         PreparedStatement stmt = null;
       
