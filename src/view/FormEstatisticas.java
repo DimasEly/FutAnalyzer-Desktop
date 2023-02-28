@@ -26,27 +26,27 @@ public class FormEstatisticas extends javax.swing.JDialog{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLEstatísticas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Olá, ");
+        jLEstatísticas.setText("Seguem as estatísticas detalhadas: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addGap(87, 87, 87)
+                .addComponent(jLEstatísticas)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jLEstatísticas)
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         pack();
@@ -87,6 +87,6 @@ public class FormEstatisticas extends javax.swing.JDialog{
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLEstatísticas;
     // End of variables declaration//GEN-END:variables
 }
