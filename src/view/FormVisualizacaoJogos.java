@@ -46,6 +46,11 @@ public class FormVisualizacaoJogos extends javax.swing.JDialog {
         jCBResultado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jBVoltar.setText("Voltar");
         jBVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +135,10 @@ public class FormVisualizacaoJogos extends javax.swing.JDialog {
             atualizaTabela();
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+
     private void jtJogadoresMouseClicked(java.awt.event.MouseEvent evt) {                                      
         Jogo jogo = jogoModel.getJogo(jTJogadores.getSelectedRow());
         FormCadastrodePartidas formcad = new FormCadastrodePartidas(jogo);
@@ -139,6 +148,7 @@ public class FormVisualizacaoJogos extends javax.swing.JDialog {
     }
     
     public void atualizarTabela() {
+<<<<<<< HEAD
 //        if(FutAnalyzer.ccont.){
 //            
 //        }
@@ -146,6 +156,29 @@ public class FormVisualizacaoJogos extends javax.swing.JDialog {
        // jogadorModel = new JogadorTableModel(FutAnalyzer.ccont.JogadorLista());
         
 //        jTJogadores.setModel(jogadorModel);
+=======
+        switch (jCBResultado.getSelectedIndex()){ // verificando o filtro selecionado
+            
+            // se o usuário escolheu TODAS (case 1)
+            // então chama a lista que possui todos os jogos do Controller 
+            // Esse método retorna todos os jogos
+            case 1 :  
+                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoLista());
+                break;
+                
+            case 2: // case 2, a tabela mostrará somente as vitórias 
+                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaVitorias());
+                break;
+                
+            case 3: //case 3, a tabela mostrará somente os empates
+                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaEmpates());
+                break;
+            
+            default : //por fim, o default mostra as derrotas
+                jogoModel = new JogoTableModel(FutAnalyzer.ccont.jogoListaDerrotas());
+        }
+        jTJogadores.setModel(jogoModel); //setando o modelo correto para a tabela do formulário
+>>>>>>> d0f21b8932aec557631563108ba90d84cbf57cf1
     }
     
     /**
