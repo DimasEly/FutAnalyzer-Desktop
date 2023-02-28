@@ -52,6 +52,24 @@ public class ConexaoController {
         }
     }
     
+    public String cadastroUsuario(Usuario usuario){
+       String msg;
+       try{
+           out.writeObject("UsuarioInserir");
+           msg = (String) in.readObject();
+           if(msg.equals("ok")){
+            out.writeObject(usuario);
+            return (String) in.readObject();
+           
+       } else {
+               return "nok";
+           }
+       } catch (Exception e){
+           return null;
+       }
+        
+}
+    
     public String inserirJogador(Jogador jogador){
         String msg;
         try{
@@ -230,6 +248,23 @@ public class ConexaoController {
             return null;
         }
     }
+    
+//    public ArrayList<Jogo> jogoListaEstatisticas(Jogo jogo){
+//        String msg;
+//        try{
+//            out.writeObject("JogoListaEstatisticaDesktop");
+//            out.writeObject(FutAnalyzer.ccont.usuarioLogado);
+//            ArrayList<Jogo> listaVitorias = (ArrayList<Jogo>) in.readObject();
+//            ArrayList<Jogo> listaEmpates = (ArrayList<Jogo>) in.readObject();
+//            ArrayList<Jogo> listaDerrotas = (ArrayList<Jogo>) in.readObject();
+//            return listaVitorias;
+//            return listaEmpates;
+//            return listaDerrotas; 
+//        } catch (Exception e){
+//            e.printStackTrace();
+//            return null;
+//        }
+//    } 
 
     public Usuario getUsuarioLogado() {
         return usuarioLogado;

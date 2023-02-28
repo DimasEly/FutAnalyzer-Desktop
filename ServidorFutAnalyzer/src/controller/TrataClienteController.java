@@ -117,6 +117,26 @@ public class TrataClienteController extends Thread{
                             JogoDao jogoDao5 = new JogoDao();
                             int golsSofridos = jogoDao5.getGolsSofridos(user);
                             out.writeObject(golsSofridos);
+                } else if(comando.equalsIgnoreCase("JogoListasEstatisticasDesktop")){    
+                            Usuario user = (Usuario) in.readObject();
+                            JogoDao jogoDao = new JogoDao();
+                            ArrayList<Jogo> listaJogosVitoria = jogoDao.getListaVitorias(user);
+                            out.writeObject(listaJogosVitoria);
+                            JogoDao jogoDao2 = new JogoDao();
+                            ArrayList<Jogo> listaJogosEmpate = jogoDao2.getListaEmpates(user);
+                            out.writeObject(listaJogosEmpate);
+                            JogoDao jogoDao3 = new JogoDao();
+                            ArrayList<Jogo> listaJogosDerrotas = jogoDao3.getListaDerrotas(user);
+                            out.writeObject(listaJogosDerrotas); 
+                                } else if(comando.equalsIgnoreCase("JogoListasEstatisticas")){    
+                            Usuario user = (Usuario) in.readObject(); 
+                            JogoDao jogoDao = new JogoDao();
+                            int golsFeitos = jogoDao.getGolsFeitos(user);
+                            out.writeObject(golsFeitos);
+                            JogoDao jogoDao2 = new JogoDao();
+                            int golsSofridos = jogoDao2.getGolsSofridos(user);
+                            out.writeObject(golsSofridos);
+                            
                 }else if(comando.equalsIgnoreCase("JogoListaVitorias")){    
                             Usuario user = (Usuario) in.readObject();
                             JogoDao jogoDao = new JogoDao();
