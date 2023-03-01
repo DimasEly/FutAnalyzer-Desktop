@@ -20,6 +20,7 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
     
     public FormCadastroEManutencao(Jogador jogador) {
         initComponents();
+        setTitle("Cadastro de jogadores");
         
         if ( jogador == null){ // cadastro novo
             codigo = -1;
@@ -50,6 +51,9 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jBVoltar.setBackground(new java.awt.Color(98, 0, 238));
+        jBVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBVoltar.setForeground(new java.awt.Color(255, 255, 255));
         jBVoltar.setText("Voltar");
         jBVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,10 +61,15 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
             }
         });
 
+        jLNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLNome.setText("Nome");
 
+        jLOverall.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLOverall.setText("Overall");
 
+        jBExcluir.setBackground(new java.awt.Color(98, 0, 238));
+        jBExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBExcluir.setForeground(new java.awt.Color(255, 255, 255));
         jBExcluir.setText("Excluir");
         jBExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +77,9 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
             }
         });
 
+        jBSalvar.setBackground(new java.awt.Color(98, 0, 238));
+        jBSalvar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBSalvar.setForeground(new java.awt.Color(255, 255, 255));
         jBSalvar.setText("Salvar");
         jBSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,34 +91,33 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLOverall)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addComponent(jBVoltar))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(106, 106, 106)
-                            .addComponent(jLNome))))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTFNome, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                    .addComponent(jTFOverall))
-                .addContainerGap(101, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
-                .addComponent(jBExcluir)
-                .addGap(64, 64, 64)
-                .addComponent(jBSalvar)
-                .addGap(82, 82, 82))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jBVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLNome)
+                            .addComponent(jLOverall))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTFNome)
+                            .addComponent(jTFOverall, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jBVoltar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLNome)
                     .addComponent(jTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -114,14 +125,15 @@ public class FormCadastroEManutencao extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLOverall)
                     .addComponent(jTFOverall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBExcluir)
-                    .addComponent(jBSalvar))
-                .addGap(31, 31, 31))
+                .addGap(38, 38, 38)
+                .addComponent(jBSalvar)
+                .addGap(18, 18, 18)
+                .addComponent(jBExcluir)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed

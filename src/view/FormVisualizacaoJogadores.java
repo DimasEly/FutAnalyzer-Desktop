@@ -72,6 +72,9 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jBCadastrar.setBackground(new java.awt.Color(98, 0, 238));
+        jBCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         jBCadastrar.setText("Cadastrar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +82,9 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
             }
         });
 
+        jBVoltar.setBackground(new java.awt.Color(98, 0, 238));
+        jBVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBVoltar.setForeground(new java.awt.Color(255, 255, 255));
         jBVoltar.setText("Voltar");
         jBVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +92,7 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
             }
         });
 
+        jLFiltro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLFiltro.setText("Filtro");
 
         jTFFiltro.addActionListener(new java.awt.event.ActionListener() {
@@ -104,17 +111,14 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 158, Short.MAX_VALUE)
-                        .addComponent(jLFiltro)
-                        .addGap(26, 26, 26)
-                        .addComponent(jTFFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jBVoltar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40)
+                .addComponent(jBVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jLFiltro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTFFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(jBCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -132,7 +136,9 @@ public class FormVisualizacaoJogadores extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBVoltar)
-                    .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jBCadastrar)))
                 .addGap(22, 22, 22))
         );
 

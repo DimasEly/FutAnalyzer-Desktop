@@ -17,6 +17,7 @@ public class FormCadastrodePartidas extends javax.swing.JDialog {
     
     public FormCadastrodePartidas(Jogo jogo) {
         initComponents();
+        setTitle("Cadastro de partidas");
         if(jogo == null){
             codigo = -1;
             jBExcluir.setEnabled(false);
@@ -46,10 +47,15 @@ public class FormCadastrodePartidas extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLNome.setText("Meu Time");
 
+        jLOverall.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLOverall.setText("Oponente");
 
+        jBExcluir.setBackground(new java.awt.Color(98, 0, 238));
+        jBExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBExcluir.setForeground(new java.awt.Color(255, 255, 255));
         jBExcluir.setText("Excluir");
         jBExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +63,9 @@ public class FormCadastrodePartidas extends javax.swing.JDialog {
             }
         });
 
+        jBSalvar.setBackground(new java.awt.Color(98, 0, 238));
+        jBSalvar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBSalvar.setForeground(new java.awt.Color(255, 255, 255));
         jBSalvar.setText("Salvar");
         jBSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +73,9 @@ public class FormCadastrodePartidas extends javax.swing.JDialog {
             }
         });
 
+        jBVoltar.setBackground(new java.awt.Color(98, 0, 238));
+        jBVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBVoltar.setForeground(new java.awt.Color(255, 255, 255));
         jBVoltar.setText("Voltar");
         jBVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,34 +87,34 @@ public class FormCadastrodePartidas extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jBVoltar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLOverall)
                             .addComponent(jLNome))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTFGolsMeuTime, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFGolsOponente, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addGap(94, 94, 94))
+                            .addComponent(jTFGolsOponente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBExcluir)
-                        .addGap(64, 64, 64)
-                        .addComponent(jBSalvar)))
-                .addGap(82, 82, 82))
+                        .addGap(25, 25, 25)
+                        .addComponent(jBVoltar)))
+                .addContainerGap(141, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jBSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                .addGap(125, 125, 125))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jBVoltar)
-                .addGap(67, 67, 67)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLNome)
                     .addComponent(jTFGolsMeuTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -110,11 +122,11 @@ public class FormCadastrodePartidas extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLOverall)
                     .addComponent(jTFGolsOponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBExcluir)
-                    .addComponent(jBSalvar))
-                .addGap(31, 31, 31))
+                .addGap(41, 41, 41)
+                .addComponent(jBSalvar)
+                .addGap(18, 18, 18)
+                .addComponent(jBExcluir)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();

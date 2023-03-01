@@ -15,6 +15,7 @@ public class FormInicial extends javax.swing.JDialog {
      */
     public FormInicial() {
         initComponents();
+        setTitle("Tela inicial");
         
         jLNomeUsuario.setText("Bem vindo(a): " + FutAnalyzer.ccont.usuario.getUsuario());
         
@@ -38,8 +39,12 @@ public class FormInicial extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Você deseja:");
 
+        jBJogadores.setBackground(new java.awt.Color(98, 0, 238));
+        jBJogadores.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBJogadores.setForeground(new java.awt.Color(255, 255, 255));
         jBJogadores.setText("Visualizar jogadores");
         jBJogadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +52,9 @@ public class FormInicial extends javax.swing.JDialog {
             }
         });
 
+        jBVisualizaJogo.setBackground(new java.awt.Color(98, 0, 238));
+        jBVisualizaJogo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBVisualizaJogo.setForeground(new java.awt.Color(255, 255, 255));
         jBVisualizaJogo.setText("Visualizar jogos");
         jBVisualizaJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,8 +62,12 @@ public class FormInicial extends javax.swing.JDialog {
             }
         });
 
+        jLNomeUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLNomeUsuario.setText("Seja Bem Vindo(a):");
 
+        jBEstatistica.setBackground(new java.awt.Color(98, 0, 238));
+        jBEstatistica.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBEstatistica.setForeground(new java.awt.Color(255, 255, 255));
         jBEstatistica.setText("Estatísticas");
         jBEstatistica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +75,9 @@ public class FormInicial extends javax.swing.JDialog {
             }
         });
 
+        jBSair.setBackground(new java.awt.Color(98, 0, 238));
+        jBSair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBSair.setForeground(new java.awt.Color(255, 255, 255));
         jBSair.setText("Sair");
         jBSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,28 +90,29 @@ public class FormInicial extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBVisualizaJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBEstatistica, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(146, 146, 146)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(jLNomeUsuario))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(89, 89, 89)
-                            .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLNomeUsuario))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBVisualizaJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBEstatistica, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel1)))))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLNomeUsuario)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jBJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -106,10 +122,11 @@ public class FormInicial extends javax.swing.JDialog {
                 .addComponent(jBEstatistica, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBJogadoresActionPerformed
