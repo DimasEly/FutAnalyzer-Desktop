@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import modelDominio.Jogador;
 import modelDominio.Jogo;
+import modelDominio.Totais;
 import modelDominio.Usuario;
 import view.FutAnalyzer;
 
@@ -249,22 +250,26 @@ public class ConexaoController {
         }
     }
     
-//    public ArrayList<Jogo> jogoListaEstatisticas(Jogo jogo){
-//        String msg;
-//        try{
-//            out.writeObject("JogoListaEstatisticaDesktop");
-//            out.writeObject(FutAnalyzer.ccont.usuarioLogado);
-//            ArrayList<Jogo> listaVitorias = (ArrayList<Jogo>) in.readObject();
-//            ArrayList<Jogo> listaEmpates = (ArrayList<Jogo>) in.readObject();
-//            ArrayList<Jogo> listaDerrotas = (ArrayList<Jogo>) in.readObject();
-//            return listaVitorias;
-//            return listaEmpates;
-//            return listaDerrotas; 
-//        } catch (Exception e){
-//            e.printStackTrace();
-//            return null;
-//        }
-//    } 
+    public Totais jogoListaEstatisticas(Jogo jogo){
+        String msg;
+        Totais totais;
+        try{
+            
+            out.writeObject("JogoListasEstatisticas");
+            out.writeObject(FutAnalyzer.ccont.usuarioLogado);
+            ArrayList<Jogo> listaVitorias = (ArrayList<Jogo>) in.readObject();
+            ArrayList<Jogo> listaEmpates = (ArrayList<Jogo>) in.readObject();
+            ArrayList<Jogo> listaDerrotas = (ArrayList<Jogo>) in.readObject();
+            int golsFeitos = (int) in.readObject();
+            int golsSofridos = (int) in.readObject();
+            totais = new Totais(listaVitorias.size(), listaEmpates.size(), listaDerrotas.size(), golsFeitos, golsSofridos);
+            return totais;
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    } 
+    
 
     public Usuario getUsuarioLogado() {
         return usuarioLogado;

@@ -4,17 +4,62 @@
  */
 package view;
 
+import java.text.DecimalFormat;
+import modelDominio.Jogo;
+import modelDominio.Totais;
+
 /**
  *
  * @author magal
  */
 public class FormEstatisticas extends javax.swing.JDialog{
+    Jogo jogo;
+    Totais totais = FutAnalyzer.ccont.jogoListaEstatisticas(jogo);
+    DecimalFormat formato = new DecimalFormat("#,##");
+    DecimalFormat formatoInteiro = new DecimalFormat("#");
+    
+    int numeroVitorias = totais.getNumVit();
+    int numeroEmpates = totais.getNumEmp();
+    int numeroDerrotas = totais.getNumDer();
+    int partidasDisputadas = numeroVitorias+numeroDerrotas+numeroEmpates;
+    int golsFeitos = totais.getGolsFeitos();
+    int golsSofridos = totais.getGolsSofridos();
+    int saldoGols = golsFeitos-golsSofridos;
+    
+
+    
 
     /**
      * Creates new form FormEstatisticas
      */
     public FormEstatisticas() {
         initComponents();
+        jLJogosDisputados.setText(""+partidasDisputadas);
+        jLVitorias.setText("" + numeroVitorias);
+        jLEmpates.setText(""+ numeroEmpates);
+        jLDerrotas.setText(""+ numeroDerrotas);
+        jLGolsFeitos.setText("" + golsFeitos);
+        jLGolsSofridos.setText(""+golsSofridos);
+        jLSaldo.setText(""+ saldoGols);
+        if(partidasDisputadas > 0){
+    float golspjogo = (float) golsFeitos/ (float) partidasDisputadas;
+    float golssofridospjogo = (float) golsSofridos/ (float)partidasDisputadas;
+    float aproveitamento = (((float)numeroVitorias*3 + (float)numeroEmpates) / ((float)partidasDisputadas*3) *100);
+    jLaproveitamento.setText(""+formatoInteiro.format(aproveitamento)+"%");
+    jLgolpjogo.setText("" + formato.format(golspjogo));
+    jLgolssofridos.setText(""+ formato.format(golssofridospjogo));
+        } else{
+    jLaproveitamento.setText("0");
+    jLgolpjogo.setText("0");
+    jLgolssofridos.setText("0");
+        }
+        
+        
+        
+        
+        
+        
+        
     }
 
     /**
@@ -38,16 +83,16 @@ public class FormEstatisticas extends javax.swing.JDialog{
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        jLVitorias = new javax.swing.JLabel();
+        jLDerrotas = new javax.swing.JLabel();
+        jLGolsFeitos = new javax.swing.JLabel();
+        jLgolpjogo = new javax.swing.JLabel();
+        jLgolssofridos = new javax.swing.JLabel();
+        jLGolsSofridos = new javax.swing.JLabel();
+        jLEmpates = new javax.swing.JLabel();
+        jLSaldo = new javax.swing.JLabel();
+        jLaproveitamento = new javax.swing.JLabel();
+        jLJogosDisputados = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -80,25 +125,25 @@ public class FormEstatisticas extends javax.swing.JDialog{
 
         jLabel10.setText("Aproveitamento");
 
-        jLabel11.setText("jLabel11");
+        jLVitorias.setText("10");
 
-        jLabel12.setText("jLabel12");
+        jLDerrotas.setText("3");
 
-        jLabel13.setText("jLabel13");
+        jLGolsFeitos.setText("15");
 
-        jLabel14.setText("jLabel14");
+        jLgolpjogo.setText("1,5");
 
-        jLabel15.setText("jLabel15");
+        jLgolssofridos.setText("2,5");
 
-        jLabel16.setText("jLabel16");
+        jLGolsSofridos.setText("5");
 
-        jLabel17.setText("jLabel17");
+        jLEmpates.setText("5");
 
-        jLabel18.setText("jLabel18");
+        jLSaldo.setText("10");
 
-        jLabel19.setText("jLabel19");
+        jLaproveitamento.setText("80");
 
-        jLabel20.setText("jLabel20");
+        jLJogosDisputados.setText("20");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,37 +159,61 @@ public class FormEstatisticas extends javax.swing.JDialog{
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLVitorias))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLGolsFeitos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLgolpjogo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel15))
-                        .addGap(66, 66, 66)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel9)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(23, 23, 23)
+                                            .addComponent(jLGolsSofridos)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLEmpates)
+                                                .addGap(23, 23, 23)))
+                                        .addGap(74, 74, 74)))
+                                .addGap(66, 66, 66))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLgolssofridos)
+                                .addGap(126, 126, 126)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel17)
                             .addComponent(jLabel10)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLDerrotas))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLSaldo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jLaproveitamento)))
                         .addGap(60, 60, 60))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20)
+                        .addComponent(jLJogosDisputados)
                         .addGap(389, 389, 389))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(141, 141, 141)
                 .addComponent(jLEstatísticas)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,40 +223,45 @@ public class FormEstatisticas extends javax.swing.JDialog{
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel20))
+                    .addComponent(jLJogosDisputados))
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jBVoltar)
-                .addGap(21, 21, 21))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLVitorias)
+                            .addComponent(jLEmpates, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLGolsFeitos)
+                            .addComponent(jLGolsSofridos)
+                            .addComponent(jLSaldo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLgolpjogo)
+                            .addComponent(jLgolssofridos)
+                            .addComponent(jLaproveitamento))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(jBVoltar)
+                        .addGap(21, 21, 21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLDerrotas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -234,20 +308,17 @@ public class FormEstatisticas extends javax.swing.JDialog{
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBVoltar;
+    private javax.swing.JLabel jLDerrotas;
+    private javax.swing.JLabel jLEmpates;
     private javax.swing.JLabel jLEstatísticas;
+    private javax.swing.JLabel jLGolsFeitos;
+    private javax.swing.JLabel jLGolsSofridos;
+    private javax.swing.JLabel jLJogosDisputados;
+    private javax.swing.JLabel jLSaldo;
+    private javax.swing.JLabel jLVitorias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -255,5 +326,8 @@ public class FormEstatisticas extends javax.swing.JDialog{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLaproveitamento;
+    private javax.swing.JLabel jLgolpjogo;
+    private javax.swing.JLabel jLgolssofridos;
     // End of variables declaration//GEN-END:variables
 }
