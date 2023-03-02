@@ -15,8 +15,6 @@ import modelDominio.Totais;
 public class FormEstatisticas extends javax.swing.JDialog{
     Jogo jogo;
     Totais totais = FutAnalyzer.ccont.jogoListaEstatisticas(jogo);
-    DecimalFormat formato = new DecimalFormat("#,##");
-    DecimalFormat formatoInteiro = new DecimalFormat("#");
     
     int numeroVitorias = totais.getNumVit();
     int numeroEmpates = totais.getNumEmp();
@@ -45,10 +43,13 @@ public class FormEstatisticas extends javax.swing.JDialog{
         if(partidasDisputadas > 0){
     float golspjogo = (float) golsFeitos/ (float) partidasDisputadas;
     float golssofridospjogo = (float) golsSofridos/ (float)partidasDisputadas;
-    float aproveitamento = (((float)numeroVitorias*3 + (float)numeroEmpates) / ((float)partidasDisputadas*3) *100);
-    jLaproveitamento.setText(""+formatoInteiro.format(aproveitamento)+"%");
-    jLgolpjogo.setText("" + formato.format(golspjogo));
-    jLgolssofridos.setText(""+ formato.format(golssofridospjogo));
+    float aproveitamento = (((float)numeroVitorias*3 + (float)numeroEmpates) / (((float)partidasDisputadas*3)) *100);
+    String aproveitamentoFormatado = String.format("%.0f", aproveitamento);
+    jLaproveitamento.setText(""+aproveitamentoFormatado+"%");
+    String golpjogoformatado = String.format("%.2f", golspjogo); 
+    jLgolpjogo.setText(golpjogoformatado);
+    String golsofridoformatado = String.format("%.2f", golssofridospjogo);
+    jLgolssofridos.setText(golsofridoformatado);
         } else{
     jLaproveitamento.setText("0");
     jLgolpjogo.setText("0");
@@ -173,12 +174,13 @@ public class FormEstatisticas extends javax.swing.JDialog{
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLEmpates))
-                    .addComponent(jLabel3))
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jLEmpates)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -206,20 +208,21 @@ public class FormEstatisticas extends javax.swing.JDialog{
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
                         .addComponent(jLDerrotas)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLDerrotas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
@@ -311,7 +314,7 @@ public class FormEstatisticas extends javax.swing.JDialog{
                         .addGap(22, 22, 22)
                         .addComponent(jLabel10))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(62, 62, 62)
                         .addComponent(jLaproveitamento)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -340,20 +343,21 @@ public class FormEstatisticas extends javax.swing.JDialog{
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jLSaldo)
-                        .addGap(40, 40, 40))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(61, 61, 61))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLSaldo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addContainerGap())
         );
@@ -500,6 +504,7 @@ public class FormEstatisticas extends javax.swing.JDialog{
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
